@@ -2,7 +2,7 @@
 layout: post
 title:  "Functional-Programming javascript basic idea"
 date:   2022-03-04 11:02:48 +0800
-categories: javascript
+categories: javascript fp
 ---
 
 基本的 `pipe` 實做
