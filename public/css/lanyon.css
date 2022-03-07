@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 .home {
   font-family: sans-serif, Helvetica, Arial;
   font-weight: 300;  
-  /* width: 15%; */
+  width: 100%;
   color: rgb(125, 144, 146);
   background-color: rgb(226, 234, 245);
   letter-spacing: 2;
