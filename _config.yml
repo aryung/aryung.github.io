@@ -45,11 +45,5 @@ collections:
 #   - vendor/ruby/
 
 
-# About/contact
-author:
-  name:              Aryung Chen
-  url:               https://aryung.github.io/
-  email:             aryung[at]gmail.com
-
 # Handling reading
 encoding: "utf-8"
