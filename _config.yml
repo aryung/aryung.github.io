@@ -21,13 +21,17 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: aryungchen
 github_username:  aryung
+tagline:             '技術分享'
+excerpt_separator:  '<!-- more -->'
 
 # Build settings
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-
+collections:
+  tag:
+    output: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
@@ -39,3 +43,13 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
+# About/contact
+author:
+  name:              Aryung Chen
+  url:               https://aryung.github.io/
+  email:             aryung[at]gmail.com
+
+# Handling reading
+encoding: "utf-8"
