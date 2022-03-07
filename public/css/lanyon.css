@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;  
   width: 100%;
   color: rgb(125, 144, 146);
-  background-color: rgb(226, 234, 245);
+  /* background-color: rgb(226, 234, 245); */
   letter-spacing: 2;
   display: inline-block;
   border-radius: 15px;  
