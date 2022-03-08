@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Javascript Prototype From Tyler"
+title:  "截錄 Tyler Prototype 原型的說明"
 published: true
 tags: 
   - "javascript"
@@ -38,10 +38,6 @@ function Animal (name, energy) {
   return animal
 }
 {% endhighlight %}
-
-
-
-<!-- ![video](https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj09/proto_anim-mp4.mp4) -->
 
 # 關鍵字 new
 
