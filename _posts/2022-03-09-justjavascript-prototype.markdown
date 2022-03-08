@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "截錄 Tyler Prototype 原型的說明"
+title:  "JS prototype by Dan Abramov"
 published: true
 tags: 
   - "javascript"
