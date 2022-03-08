@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Functional Programming In JS"
+title:  "Functional Programming In JS Box"
 published: true
 tags: 
   - "javascript"
