@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "JS prototype by Dan Abramov"
+title:  "JS __proto__ by Dan Abramov"
 published: true
 tags: 
   - "javascript"
 ---
 
 # 楔子
-截錄 [justjavascrpt prototype](https://justjavascript.com)
+[justjavascrpt prototype](https://justjavascript.com)
 
 {% highlight javascript %}
 let human = {
