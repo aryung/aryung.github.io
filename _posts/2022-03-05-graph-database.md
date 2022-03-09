@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Neo4J: Graph Database"
+title:  "Neo4j: 圖資料庫"
 date:   2022-03-05 11:00:00 +0800
 published: true
 tags: 
