@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Functional Programming In JS Box"
+title:  "函數式編程 Functor 的運用"
 published: true
 tags: 
   - "javascript"
