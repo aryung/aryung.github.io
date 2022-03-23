@@ -11,6 +11,16 @@ GraphQL Server 的基本架構大概就幾個主要的元件:
 - Server 伺服服務
 - resolver 資料整理用
 
+模版的東西就拿來改比較快，畢竟自已搞定也要很有愛。
+
+[codesandbox](https://codesandbox.io/s/j1lkoy7nyv)
+
+市面上常用的大概就 apollor server，要自已寫 types 和 resolvers。
+
+另一個比較好用的有 prisma ，它本身有包含 database ORM 的功用，
+
+也有自動產出 client 段方便套在自已的前端 web。
+
 # Apollor Server
 `npm install apollo-server graphql`
 
