@@ -112,7 +112,6 @@ main()
 ## resolvers 羅輯
 
 {% highlight javascript %}
-# Count all posts with a title containing 'GraphQL'
 query {
   postsConnection(where: { title_contains: "GraphQL" }) {
     aggregate {
