@@ -1,12 +1,15 @@
 ---
 layout: post
-title:  "GraphQL Server 方案"
+title: 'GraphQL Server 方案'
 published: true
-tags: 
-  - ""
+tags:
+  - ''
 ---
+
 # 楔子
+
 GraphQL Server 的基本架構大概就幾個主要的元件:
+
 - types 資料結構定義
 - Server 伺服服務
 - resolver 資料整理用
@@ -21,21 +24,51 @@ GraphQL Server 的基本架構大概就幾個主要的元件:
 
 也有自動產出 client 段方便套在自已的前端 web。
 
-# Apollor Server
+# 雜談
+
+其實在 GraphQL 中，最重要的就是 types & resolvers，
+
+這二個的意函在哪裡? types 其實就想像成資料的欄位設定，
+
+resolvers 就想像成取得資料要進行「加減乘除」等等處理的方法。
+
+如果從架構的角度來看
+
+client(Framework) <-> (server <-> database)
+
+在 client 和 server 端為了要彼此能溝通，勢必就要有一個標準的 types 來做依據。
+
+就指的是 client 和 server 端其實都各自要能吃同樣的 types & 解析 query-languages
+
+在 server 端，就因為常常有舊的資料庫問題，那是不是這個 type 同時也能滿足 ORM 的功能?
+
+所以像 prisma 的服務就同時幫你產出 client.js & server 服務 & ORM 資料庫所需要的設定。
+
+像 Apollo 就做 client + server 段，但 DB 端就用自已使用習慣的 ORM(eg. typeorm sequlized 之類的)
+
+設定上因為有點麻煩，自然就有公司做服務省事賣錢...
+
+# Apollo Server
+
 `npm install apollo-server graphql`
 
 ## types 定義 schema
+
 {% highlight javascript %}
 const typeDefs = gql`
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
-  type Book {
-    title: String
-    author: String
-  }
-  # The "Query" type is special
-  type Query {
-    books: [Book]
-  }
+
+# Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+
+type Book {
+title: String
+author: String
+}
+
+# The "Query" type is special
+
+type Query {
+books: [Book]
+}
 `
 {% endhighlight %}
 
@@ -46,7 +79,7 @@ const typeDefs = gql`
 const { ApolloServer, gql } = require('apollo-server');
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+console.log(`🚀 Server ready at ${url}`);
 })
 {% endhighlight %}
 
@@ -54,32 +87,33 @@ server.listen().then(({ url }) => {
 
 {% highlight javascript %}
 const resolvers = {
-  Query: {
-    books: () => books,
-  },
+Query: {
+books: () => books,
+},
 }
 {% endhighlight %}
 
 # Prisma Server
 
 ## types 定義 schema
+
 ![prisma types](https://i.imgur.com/jHkNjKU.png)
 
 {% highlight javascript %}
 type Post {
-  id: ID! @unique
-  title: String!
-  published: Boolean!
-  author: User!
+id: ID! @unique
+title: String!
+published: Boolean!
+author: User!
 }
 
 type User {
-  id: ID! @unique
-  age: Int
-  email: String! @unique
-  name: String!
-  accessRole: AccessRole
-  posts: [Post!]!
+id: ID! @unique
+age: Int
+email: String! @unique
+name: String!
+accessRole: AccessRole
+posts: [Post!]!
 }
 
 {% endhighlight %}
@@ -93,30 +127,33 @@ const prisma = new PrismaClient()
 
 // A `main` function so that you can use async/await
 async function main() {
-  const allUsers = await prisma.user.findMany({
-    include: { posts: true },
-  })
-  // use `console.dir` to print nested objects
-  console.dir(allUsers, { depth: null })
+const allUsers = await prisma.user.findMany({
+include: { posts: true },
+})
+// use `console.dir` to print nested objects
+console.dir(allUsers, { depth: null })
 }
 
 main()
-  .catch((e) => {
-    throw e
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+.catch((e) => {
+throw e
+})
+.finally(async () => {
+await prisma.\$disconnect()
+})
 {% endhighlight %}
 
 ## resolvers 羅輯
 
 {% highlight javascript %}
+
+# Count all posts with a title containing 'GraphQL'
+
 query {
-  postsConnection(where: { title_contains: "GraphQL" }) {
-    aggregate {
-      count
-    }
-  }
+postsConnection(where: { title_contains: "GraphQL" }) {
+aggregate {
+count
+}
+}
 }
 {% endhighlight %}
