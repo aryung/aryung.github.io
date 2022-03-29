@@ -50,6 +50,56 @@ console.log(childObj.name) // yo why?
 
 ## call apply bind
 和 `Object.create` 有異取同工之妙
+
+這篇可以參考 [pjchender](https://pjchender.blogspot.com/2016/06/function-borrowingfunction-currying.html)
+
+{% highlight javascript %}
+// this 指的是 function scope
+var person = {
+  firstname: 'Jeremy',
+  lastname: 'Lin',
+  getFullName: function(){
+    var fullname = this.firstname + ' ' + this.lastname;
+    return fullname;
+  }
+}
+
+// this 指是 ? 因為沒有 object 就往上一層 window
+var logName = function(location1,location2){
+  console.log('Logged: ' + this.getFullName());
+  console.log('Arguments: ' + location1 + ' ' + location2);
+}
+{% endhighlight%}
+
+有了上面的樣本，開始把 this 用 `bind` `apply` `call` 綁進去取代 `this`
+
+{% highlight javascript %}
+var logName = function(location1,location2){
+  console.log('Logged: ' + this.getFullName());
+  console.log('Arguments: ' + location1 + ' ' + location2);
+}.bind(person) // 重點是取 person 的 this.getFullName()
+
+logName('Taiwan', 'Japan')
+{% endhighlight%}
+
+來看看 call & apply
+
+{% highlight javascript %}
+var logName = function(location1,location2){
+  console.log('Logged: ' + this.getFullName());
+  console.log('Arguments: ' + location1 + ' ' + location2);
+}
+// call
+logName.call(person, 'Taiwan', 'Japan')
+
+var logName = function(location1,location2){
+  console.log('Logged: ' + this.getFullName());
+  console.log('Arguments: ' + location1 + ' ' + location2);
+}
+// apply
+logName.apply(person, ['Taiwan', 'Japan'])
+{% endhighlight%}
+
 {% highlight javascript %}
 function add(a, b) {
   return (this.age ? 0 : 10) + a + b
@@ -126,6 +176,7 @@ console.log(ho.getAge()); // 18
 {% endhighlight %}
 
 ### arrow function vs function (this)
+
 箭頭函數的 this 取最近一層的 scope，所以在 function 內的 this 的 scope 在 function，而 setTimeout 的 scope 會取最大層(window)
 
 {% highlight javascript %}
