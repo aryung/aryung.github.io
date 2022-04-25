@@ -1,9 +1,8 @@
 ---
 layout: post
 title:  "useContext Provider 起手式"
-published: true
-tags: 
-  - ""
+date: 2022-04-08T18:29:06+08:00
+draft: false
 ---
 # 楔子
 useContext 是 hook 系列很常使用的東西，通常就在「跨」 components 之間使用
@@ -19,7 +18,7 @@ useContext 是 hook 系列很常使用的東西，通常就在「跨」 componen
 # 一般式
 這是比較正常的方式，最外層包一個 Provider 再利用 render prop 來操作
 
-{% highlight javascript %}
+```
 import React from 'react';
 
 export const UserContext = React.createContext();
@@ -39,7 +38,7 @@ function User() {
     </UserContext.Consumer>
   )
 }
-{% endhighlight %}
+```
 
 # Kent c dodds
 但其實如果使用 Kent 的起手式，其實蠻優美的..
@@ -47,7 +46,7 @@ function User() {
 
 用一個 component 當 Provider 同時也可以在那個 Provider 內使用 useEffect 之類的功用..
 
-{% highlight javascript %}
+```
 import * as React from 'react'
 
 const CountContext = React.createContext()
@@ -90,4 +89,4 @@ function App() {
 }
 
 export default App
-{% endhighlight %}
+```

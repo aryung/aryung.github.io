@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Neo4j: 圖資料庫"
-date:   2022-03-05 11:00:00 +0800
-published: true
+date: 2022-03-05T18:29:06+08:00
+draft: false
 tags: 
   - "database"
 ---
@@ -21,12 +21,12 @@ tags:
 
 先來看一下它查詢的語法就比較容易理解他的概念。
 
-{% highlight cypher %}
+```
 MATCH (n {name: 'John'})-[:FRIEND]-(friend)
 WITH n, count(friend) AS friendsCount
 WHERE friendsCount > 3
 RETURN n, friendsCount
-{% endhighlight %}
+```
 
 其實可以「感覺」的出來就是用「node」和「relationship」來做為查詢的方式，
 
@@ -42,10 +42,10 @@ node 用 () 來標記，關係用 [] 來表示
 
 當有這個想法後，例如我好朋友的朋友有哪些?
 
-{% highlight cypher %}
+```
 MATCH (i {name: 'me'})-[:FRIEND]-(f1:friend)-[:FRIEND]-(f2:friend)
 RETURN n, f1, f2
-{% endhighlight %}
+```
 
 `i` = 我; `f1` = 我朋友; `f2` = 我朋友的朋友
 

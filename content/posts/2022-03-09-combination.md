@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "取得所有的組合再求結果"
-published: true
+date: 2022-03-09T21:29:06+08:00
+draft: false
 tags: 
   - "演算法"
 ---
@@ -20,7 +21,7 @@ tags:
 
 # Combination
 
-{% highlight javascript %}
+```
 const choose = (n, xs) =>
   n < 1 || n > xs .length
     ? []
@@ -40,13 +41,13 @@ getCombs (0, 3, [1, 2, 3])
 // [[1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]] 
 getCombs (2, 2, [1, 2, 3])
 // [[1, 2], [1, 3], [2, 3]]
-{% endhighlight %}
+```
 
 想找 [1,2,3,4,5] 任二個值「大於」3有哪些情況 ?
 
 如果我們有任意二個的組合，再過一個過濾的方法(function)就可以取得答案。
 
-{% highlight javascript %}
+```
 getCombs (2, 2, [1, 2, 3, 4, 5]).filter((data) => data[0] + data[1] > 3)
 // 等同於 記的 filter 這個 function 要回傳 true/false
 function checkValidBigThan3 (v) {
@@ -54,7 +55,7 @@ function checkValidBigThan3 (v) {
 }
 getCombs (2, 2, [1, 2, 3, 4, 5]).filter(checkValidBigThan3)
 // 上面的 code 有些狀況會噴，以後再來改
-{% endhighlight %}
+```
 
 # 取解 
 
@@ -65,9 +66,9 @@ getCombs (2, 2, [1, 2, 3, 4, 5]).filter(checkValidBigThan3)
 試想一下，把所有的組合先展開，再相乘，再過濾(>10)
 
 來運用一下 Ramda [Xprod](https://ramdajs.com/docs/#xprod)
-{% highlight javascript %}
+```
 R.xprod([1, 2], [3, 4])
  .map(list => list[0] * list[1])
  .filter(val => val > 10)
-{% endhighlight %}
+```
 

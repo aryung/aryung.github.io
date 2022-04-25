@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "Promise 新手常花時間的坑"
-published: true
+date: 2022-03-13T18:29:06+08:00
+draft: false
 tags: 
   - "react"
 ---
@@ -11,7 +12,7 @@ tags:
 
 # 狀況一: 分不清楚有沒有回傳值
 
-{% highlight javascript %}
+```
 functo go1 () {
   return 1
 } // 有回傳值
@@ -36,7 +37,7 @@ const go6 = () => {
   7
 }
 const go7 = (x) => ({x})
-{% endhighlight %}
+```
 
 從上面的問題來看，最直覺的就是要有 `return` 字眼就是代表有回傳值，所以 go1 go2 很容易判斷。
 
@@ -47,7 +48,7 @@ const go7 = (x) => ({x})
 # 易發生的 use case
 上面的例子最常發生在 `.then` 的情況下
 
-{% highlight javascript %}
+```
 function getAddOne(x) {
   return new Promise((resolve, reject) => {
     resolve(x + 1)
@@ -73,7 +74,7 @@ function errGetAddOne(x) {
 getAddOne(10).then(x => getTimesTen(x)) //?
 errGetAddOne(10).then(x => getTimesTen(x)) //?
 
-{% endhighlight %}
+```
 
 可以試一下上面的 demo code，就會發現所謂的 
 

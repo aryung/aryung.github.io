@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "JS Prototype by Tyler McGinnis"
-published: true
+date: 2022-03-08T21:29:06+08:00
+draft: false
 tags: 
   - "javascript"
 ---
@@ -15,14 +16,14 @@ Tyler 講的 prototype 的觀念蠻清楚 & 簡單的，稍做一下記錄
 
 用下面的例子就可以來解釋上面的句子
 
-{% highlight javascript %}
+```
 function imAFunction () {}
 imAFunction.prototype // {constructor: f}
-{% endhighlight %}
+```
 
 把共用的 Method 放在一起包裝在一個 Object 內
 
-{% highlight javascript %}
+```
 // 共用的 method
 const animalMethods() {
   eat () {},
@@ -37,13 +38,13 @@ function Animal (name, energy) {
 
   return animal
 }
-{% endhighlight %}
+```
 
 # 關鍵字 new
 
 `new` 做的就只是把 Object.create 做修正一下
 
-{% highlight javascript %}
+```
 
 function AnimalWithNew (name, energy) {
   this = Object.create(Animal.prototype)
@@ -55,4 +56,4 @@ function AnimalWithNew (name, energy) {
 
 let snoppy = new AnimalWithNew('snoopy', 100)
 
-{% endhighlight %}
+```
