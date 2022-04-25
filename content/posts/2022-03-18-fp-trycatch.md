@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "如何使用 try catch"
-published: true
+date: 2022-03-18T18:29:06+08:00
+draft: false
 tags: 
   - "javascript"
 ---
@@ -10,7 +11,7 @@ tags:
 寫程式時噴錯誤是蠻常見的，就每發生一個錯誤，再加一個條件去排除錯誤的問題
 
 往往如此， code 就會開始蠻的有點「巢狀」的感覺
-{% highlight javascript %}
+```
 if(check) {
   // 1-level
   if(check) {
@@ -26,18 +27,18 @@ if(check) {
 } else {
   // 1-level
 }
-{% endhighlight %}
+```
 
 # 原來的 try-catch
 標準的 try-catch 程式長相大概如下， try-catch 主要的功用就是避免程式噴錯跳離
 
-{% highlight javascript %}
+```
 try {
   // do something
 } catch (e) {
   console.log(e.message)
 }
-{% endhighlight %}
+```
 
 但也常常有個問題就是錯誤的類型如果不確定，就常常一直補 code 除錯。
 
@@ -45,7 +46,7 @@ try {
 
 包一個 try-catch ，噴錯看 log ，補 if-else 的 bug handling，再重覆 try-catch 的 log..
 
-{% highlight javascript %}
+```
 // version 1
 function go(x) {
   try {
@@ -70,7 +71,7 @@ function go1(x) {
 
 go(undefined) // 噴 undefined 沒有 length
 go(['hello'])
-{% endhighlight %}
+```
 
 那是不是有方式可以反正噴就直接先給 null (駝鳥心態..嘿嘿..)
 
@@ -93,7 +94,7 @@ go(['hello'])
 
 先運用之前提的 Box 的觀念，把值塞在裡面..
 
-{% highlight javascript %}
+```
 function tryCatch(f) {
   try {
     return Right(f())
@@ -105,10 +106,10 @@ function tryCatch(f) {
 let go1 = tryCatch(() => undefined.length).map(x => x + 1) // Left(e)
 let go2 = tryCatch(() => 2).map(x => x + 1) // Right(2)
 
-{% endhighlight %}
+```
 
 # 參考 code
-{% highlight javascript %}
+```
 const Box = x =>
 ({
   map: f => Box(f(x)),
@@ -126,4 +127,4 @@ const Left = x =>
     map : f => Left(x),
     inspect : () => `Left(${x})`
   })
-{% endhighlight %}
+```

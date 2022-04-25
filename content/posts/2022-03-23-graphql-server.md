@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 'GraphQL Server 方案'
-published: true
+date: 2022-03-23T18:29:06+08:00
+draft: false
 tags:
   - ''
 ---
@@ -54,7 +55,7 @@ client(Framework) <-> (server <-> database)
 
 ## types 定義 schema
 
-{% highlight javascript %}
+```
 const typeDefs = gql`
 
 # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
@@ -70,28 +71,28 @@ type Query {
 books: [Book]
 }
 `
-{% endhighlight %}
+```
 
 ## server 伺服服務
 
-{% highlight javascript %}
+```
 // index.js
 const { ApolloServer, gql } = require('apollo-server');
 
 server.listen().then(({ url }) => {
 console.log(`🚀 Server ready at ${url}`);
 })
-{% endhighlight %}
+```
 
 ## resolvers 羅輯
 
-{% highlight javascript %}
+```
 const resolvers = {
 Query: {
 books: () => books,
 },
 }
-{% endhighlight %}
+```
 
 # Prisma Server
 
@@ -99,7 +100,7 @@ books: () => books,
 
 ![prisma types](https://i.imgur.com/jHkNjKU.png)
 
-{% highlight javascript %}
+```
 type Post {
 id: ID! @unique
 title: String!
@@ -116,11 +117,11 @@ accessRole: AccessRole
 posts: [Post!]!
 }
 
-{% endhighlight %}
+```
 
 ## server 伺服服務
 
-{% highlight javascript %}
+```
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -141,11 +142,11 @@ throw e
 .finally(async () => {
 await prisma.\$disconnect()
 })
-{% endhighlight %}
+```
 
 ## resolvers 羅輯
 
-{% highlight javascript %}
+```
 
 # Count all posts with a title containing 'GraphQL'
 
@@ -156,4 +157,4 @@ count
 }
 }
 }
-{% endhighlight %}
+```

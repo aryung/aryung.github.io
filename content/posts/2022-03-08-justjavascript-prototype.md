@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "JS 原型說明 by Dan Abramov"
-published: true
+date: 2022-03-08T18:29:06+08:00
+draft: false
 tags: 
   - "javascript"
 ---
@@ -14,7 +15,7 @@ Dan Abramov 有一個 [justjavascrpt prototype](https://justjavascript.com) 其�
 這篇文章是其中一個 prototype 的內容摘錄如下:
 
 先有一個觀念就是 `a = '123'` 中 a 是變數(variable)， `123` 是值(value)
-{% highlight javascript %}
+```
 // teeth 是 variable
 // 32 是值
 let human = {
@@ -24,38 +25,38 @@ let human = {
 let gwen = {
   age: 19
 }
-{% endhighlight %}
+```
 
 `human` 和 `gwen` 是一個 Object，他把屬性直接連到 `值`
 
 ![prototype-value](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/prop.png)
 
-{% highlight javascript %}
+```
 // gwen 沒有 teeth 屬性
 console.log(gwen.teeth) // undefined
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 }
-{% endhighlight %}
+```
 
 如果當用 `__proto__` 在 Object 裡面，`=`的右邊是一個變數，這是就是去找這個變數的 reference 在哪?
 
-{% highlight javascript %}
+```
 let gwen = {
   // We added this line:
   // __proto__ 是 reference 
   __proto__: human,
   age: 19
 }
-{% endhighlight %}
+```
 
 ![what is prototype](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/proto.png)
 
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 }
@@ -67,13 +68,13 @@ let gwen = {
 }
 
 console.log(gwen.teeth) // 32
-{% endhighlight %}
+```
 
 作者有做一個動畫說明
 
 ![video](https://res.cloudinary.com/dg3gyk0gu/video/upload/f_auto/just-javascript-email-images/jj09/proto_anim-mp4.mp4)
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 };
@@ -91,11 +92,11 @@ console.log(gwen.teeth); // ?
 
 console.log(human.tail); // ?
 console.log(gwen.tail); // ?
-{% endhighlight %}
+```
 
 再更複雜一下
 
-{% highlight javascript %}
+```
 let mammal = {
   brainy: true,
 };
@@ -111,7 +112,7 @@ let gwen = {
 };
 
 console.log(gwen.brainy); // true
-{% endhighlight %}
+```
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/protochain.png)
 
@@ -119,7 +120,7 @@ console.log(gwen.brainy); // true
 
 如果自身有屬性，以自身屬性優先。
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 };
@@ -129,25 +130,25 @@ let gwen = {
   // This object has its own teeth property:
   teeth: 31
 };
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 console.log(human.teeth); // 32
 console.log(gwen.teeth); // 31
-{% endhighlight %}
+```
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/shadowing.png)
 
-{% highlight javascript %}
+```
 console.log(human.hasOwnProperty('teeth')); // true
 console.log(gwen.hasOwnProperty('teeth')); // true
-{% endhighlight %}
+```
 
 # Assignment
 
 重新指派值。
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 };
@@ -161,54 +162,54 @@ gwen.teeth = 31;
 
 console.log(human.teeth); // ?
 console.log(gwen.teeth); // ?
-{% endhighlight %}
+```
 
 ![](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/step1.png)
 
-{% highlight javascript %}
+```
 gwen.teeth = 31;
-{% endhighlight %}
+```
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/step2.png)
 
-{% highlight javascript %}
+```
 console.log(human.teeth); // 32
 console.log(gwen.teeth); // 31
-{% endhighlight %}
+```
 
 # The Object Prototype
 
 物件的一些特性屬性
 
-{% highlight javascript %}
+```
 let obj = {};
 console.log(obj.__proto__); // Play with it!
-{% endhighlight %}
+```
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/root1.png)
 
-{% highlight javascript %}
+```
 let human = {
   teeth: 32
 };
 console.log(human.hasOwnProperty); // (function)
 console.log(human.toString); // // (function)
-{% endhighlight %}
+```
 
 # An Object With No Prototype
 
 很特別的指定，如果指定的 null
 
-{% highlight javascript %}
+```
 let weirdo = {
   __proto__: null
 };
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 console.log(weirdo.hasOwnProperty); // undefined
 console.log(weirdo.toString); // undefined
-{% endhighlight %}
+```
 
 # Polluting the Prototype
 
@@ -216,15 +217,15 @@ console.log(weirdo.toString); // undefined
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534072/just-javascript-email-images/jj09/root2.png)
 
-{% highlight javascript %}
+```
 let obj = {};
 obj.__proto__.smell = 'banana';
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 console.log(sherlock.smell); // "banana"
 console.log(watson.smell); // "banana"
-{% endhighlight %}
+```
 
 ![img](https://res.cloudinary.com/dg3gyk0gu/image/upload/v1590534071/just-javascript-email-images/jj09/pollution.png)
 
@@ -234,15 +235,15 @@ prototype 就有些語法糖的方式
 
 __proto__ vs. prototype
 
-{% highlight javascript %}
+```
 function Donut() {
   return { shape: 'round' };
 }
 
 let donut = Donut();
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 function Donut() {
   return { shape: 'round' };
 }
@@ -260,9 +261,9 @@ donut2.__proto__ = donutProto;
 
 donut1.eat();
 donut2.eat();
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 function Donut() {
   this.shape = 'round';
 }
@@ -277,9 +278,9 @@ let donut2 = new Donut(); // __proto__: Donut.prototype
 
 donut1.eat();
 donut2.eat();
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```
 class Donut {
   constructor() {
     this.shape = 'round';
@@ -294,7 +295,7 @@ let donut2 = new Donut(); // __proto__: Donut.prototype
 
 donut1.eat();
 donut2.eat();
-{% endhighlight %}
+```
 
 # Why Does This Matter?
 
