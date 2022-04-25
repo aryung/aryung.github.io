@@ -1,1 +1,97 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AC 技術分享小站</title><link>https://aryung.github.io/</link><description>Recent content on AC 技術分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 25 Apr 2022 17:07:08 +0800</lastBuildDate><atom:link href="https://aryung.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>My First Post</title><link>https://aryung.github.io/posts/my-first-post/</link><pubDate>Mon, 25 Apr 2022 17:07:08 +0800</pubDate><guid>https://aryung.github.io/posts/my-first-post/</guid><description>hyoy function go(){ console.log(&amp;#39;ok&amp;#39;) }</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>AC 技術分享小站</title><link>https://aryung.github.io/</link><description>Recent content on AC 技術分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 08 Apr 2022 18:29:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>useContext Provider 起手式</title><link>https://aryung.github.io/posts/2022-04-08-hook-context-provider/</link><pubDate>Fri, 08 Apr 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-04-08-hook-context-provider/</guid><description>楔子 useContext 是 hook 系列很常使用的東西，通常就在「跨」 components 之間使用
+有時加減也好用也有點濫用，說說比較常使用的情境吧..
+例如像 Global Theme 在所有的 component 都包上一層，像 Material UI 就採用這種模式..
+那像假設 firebase Oauth 的情況時，要用嗎?還是可以用 custom hook ?
+其實這二種方式都有人用，看自已的習慣而以..
+一般式 這是比較正常的方式，最外層包一個 Provider 再利用 render prop 來操作
+import React from &amp;#39;react&amp;#39;; export const UserContext = React.createContext(); export default function App() { return ( &amp;lt;UserContext.Provider value=&amp;#34;user&amp;#34;&amp;gt; &amp;lt;User /&amp;gt; &amp;lt;/UserContext.Provider&amp;gt; ) } function User() { return ( &amp;lt;UserContext.Consumer&amp;gt; {value =&amp;gt; &amp;lt;h1&amp;gt;{value}&amp;lt;/h1&amp;gt;} &amp;lt;/UserContext.Consumer&amp;gt; ) } Kent c dodds 但其實如果使用 Kent 的起手式，其實蠻優美的.</description></item><item><title>JS 大魔王 this</title><link>https://aryung.github.io/posts/2022-03-30-this/</link><pubDate>Wed, 30 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-30-this/</guid><description>楔子 JS 的 this 通常有所謂的 scope 問題，最近蠻常遇到小夥伴在問，就順便做一下整理。
+This 大概有幾種情況
+默認綁定(default binding) 在 function 內的 this 為 function 上一層，strict模式為 undefined function main(){ console.log(this) // this = global } main() 隱式綁定(implicit binding) var person = { name: &amp;#39;ac&amp;#39;, getName: function() { console.log(this) // this = person } } person.getName() // &amp;#39;ac&amp;#39; function click(cb){ cb() } var name = &amp;#39;aac&amp;#39; click(person.getName) // 把 person.getName 丟到 click 的參數時，這時的 this = global，這時 global.name = &amp;#39;aac&amp;#39; 所以有時看到this時，就把它丟到執行環境，有 object 就把 object = this，如果是 function 內就看 function 的那一層 this</description></item><item><title>JS 其實不是 class 的好朋友</title><link>https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/</link><pubDate>Sun, 27 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/</guid><description>楔子 Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應。
+有趣的現象是在 js 環境下，後端很常用 OOP: class style。
+但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。
+如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下，
+就可能要去準備一下 class style 的 JS/Node。
+而在 backend 的夥伴要去應徵 React 的話，就也要熟悉 function style。
+tl;dr
+一開始入門 js 時，光搞懂這些 this class 的東西應該就飽了，
+而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，
+感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，
+而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
+不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，
+發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，
+反而會比較有感就感。
+當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..
+實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
+Object.create Object.create 就是建立一個 Object 的模版資料，會依 prototype chian 去尋找相關的 method</description></item><item><title>GraphQL Server 方案</title><link>https://aryung.github.io/posts/2022-03-23-graphql-server/</link><pubDate>Wed, 23 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-23-graphql-server/</guid><description>楔子 GraphQL Server 的基本架構大概就幾個主要的元件:
+types 資料結構定義 Server 伺服服務 resolver 資料整理用 模版的東西就拿來改比較快，畢竟自已搞定也要很有愛。
+codesandbox
+市面上常用的大概就 apollor server，要自已寫 types 和 resolvers。
+另一個比較好用的有 prisma ，它本身有包含 database ORM 的功用，
+也有自動產出 client 段方便套在自已的前端 web。
+雜談 其實在 GraphQL 中，最重要的就是 types &amp;amp; resolvers，
+這二個的意函在哪裡? types 其實就想像成資料的欄位設定，
+resolvers 就想像成取得資料要進行「加減乘除」等等處理的方法。
+如果從架構的角度來看
+client(Framework) &amp;lt;-&amp;gt; (server &amp;lt;-&amp;gt; database)
+在 client 和 server 端為了要彼此能溝通，勢必就要有一個標準的 types 來做依據。
+就指的是 client 和 server 端其實都各自要能吃同樣的 types &amp;amp; 解析 query-languages
+在 server 端，就因為常常有舊的資料庫問題，那是不是這個 type 同時也能滿足 ORM 的功能?</description></item><item><title>graphql use case</title><link>https://aryung.github.io/posts/2022-03-21-graphql/</link><pubDate>Mon, 21 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-21-graphql/</guid><description>楔子 一般傳統的 RESTFul API 通常有一個缺點， 就是要設定不同的路由(routes)來當作入口點，
+久而久之就會有一堆的路由網址，也不敢去做任何的修正， 誰敢擔責任改了是不是會噴錯，
+慢慢的就也放著讓它愈長愈大了，當然後來有些 library 像 swagger 可以幫助自動產生文件，
+但也還是需要做些設定，這也慢慢的讓 graphQL 有開始長大的空間。
+GraphQL 主要的精神架構為， Server 設定好條件(資料的格式 schema &amp;amp; 路由 routes)，
+這時透過查詢語法(Query Language)所帶來的參數，經由 business logic 的轉換(資料 CRUD)再回拋資料。
+Server 元件 要架一個 GraqphQL Server，思考一下要什麼東西??
+就觀念上就要有三個東西 = Server + 資料格式 Schema + 一些數據的處理
+Server: 可以用 ExpressJS，Apollo Server.. graphQL server Scehma: 基本上就是一個定義檔，可以用不同語言的格式 type &amp;amp; schema，應該各語言都有一些轉換方式 logic: 通常就會牽涉到「數據」的處理，就會扯到 DB ，就會有一些 ORM 使用(eg. sequelize, typeorm, prisma..等等) server var express = require(&amp;#39;express&amp;#39;); var { graphqlHTTP } = require(&amp;#39;express-graphql&amp;#39;); var { buildSchema } = require(&amp;#39;graphql&amp;#39;); var schema = buildSchema(` type Query { hello: String } `); var root = { hello: () =&amp;gt; &amp;#39;Hello world!</description></item><item><title>如何使用 try catch</title><link>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</link><pubDate>Fri, 18 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</guid><description>楔子 寫程式時噴錯誤是蠻常見的，就每發生一個錯誤，再加一個條件去排除錯誤的問題
+往往如此， code 就會開始蠻的有點「巢狀」的感覺
+if(check) { // 1-level if(check) { // 2-level if(check) { // 3-level } else { // 3-level } } else { // 2-level } } else { // 1-level } 原來的 try-catch 標準的 try-catch 程式長相大概如下， try-catch 主要的功用就是避免程式噴錯跳離
+try { // do something } catch (e) { console.log(e.message) } 但也常常有個問題就是錯誤的類型如果不確定，就常常一直補 code 除錯。
+所以常常的流程大概就是
+包一個 try-catch ，噴錯看 log ，補 if-else 的 bug handling，再重覆 try-catch 的 log..
+// version 1 function go(x) { try { let len = x.</description></item><item><title>Box 的好用之處</title><link>https://aryung.github.io/posts/2022-03-15-fp-box/</link><pubDate>Tue, 15 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-15-fp-box/</guid><description>楔子 程式碼是拿來使用的，今天就來分享一些小工具來幫助寫 code ，這些東西算是函數式編程的入門吧，用久了才會比較有感，今天就當來練練手。
+先上個常用的 tool box
+const pipe = (...fns) =&amp;gt; x =&amp;gt; fns.reduce((y, f) =&amp;gt; f(y), x) const I = x =&amp;gt; x const Box = x =&amp;gt; ({ chain: f =&amp;gt; f(x), map: f =&amp;gt; Box(f(x)), fold: f =&amp;gt; f(x), inspect: () =&amp;gt; `Box(${x})` }) const Right = x =&amp;gt; ({ chain : f =&amp;gt; f(x), map : f =&amp;gt; Right(f(x)), fold : (f, g) =&amp;gt; g(x), inspect : () =&amp;gt; `Right(${x})` }) const Left = x =&amp;gt; ({ chain : f =&amp;gt; Left(x), map : f =&amp;gt; Left(x), fold : (f, g) =&amp;gt; f(x), inspect : () =&amp;gt; `Left(${x})` }) const fromNullable = x =&amp;gt; (x === null || x === undefined || x.</description></item><item><title>Promise 新手常花時間的坑</title><link>https://aryung.github.io/posts/2022-03-13-promise-codding-bug-to-newbie/</link><pubDate>Sun, 13 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-13-promise-codding-bug-to-newbie/</guid><description>楔子 最近有些小夥伴在彼此討論時，常常出現一些不太知道原因，但改一改就好了，就隨手做一下筆記也方便提醒自已。
+狀況一: 分不清楚有沒有回傳值 functo go1 () { return 1 } // 有回傳值 functin go2 () { console.log(3) } // 無回傳值 const go3 = () =&amp;gt; 2 const go4 = () =&amp;gt; { console.log(4) } // 無回傳值 function addOne (x) { return x } const go5 = () =&amp;gt; addOne(3) const go6 = () =&amp;gt; { 7 } const go7 = (x) =&amp;gt; ({x}) 從上面的問題來看，最直覺的就是要有 return 字眼就是代表有回傳值，所以 go1 go2 很容易判斷。</description></item><item><title>Hight Order Function &amp; Callback Function</title><link>https://aryung.github.io/posts/2022-03-10-high-order-function/</link><pubDate>Thu, 10 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-10-high-order-function/</guid><description>楔子 最典型的使用案例是 jQuery 時代，標準的 jQuery 格式大概就長的像下面這樣的格式
+// jQuery === $ var hiddenBox = $(&amp;#34;#banner-message&amp;#34;) jQuery(&amp;#34;#button-container button&amp;#34;).on(&amp;#34;click&amp;#34;, function(event) { hiddenBox.show() }) 通常簡化來看就是 $(DOMelement, clickFunction)，而 clickFunction 的長相像就也是像
+function (event) { // event handling } 如果是把這種格式轉換一下，大概有幾個注意的要點:
+參數可以是一個函數 函數以一個參數為佳 function add (x,y) { return x + y } function addFive (x, referenceCallback) { return referenceCallback(x) } addFive(10, add) // 標準化 function highOrderFunction (x, callback) { return callback(x) } 蠻多的 js 的函數也都採用這樣的 coding style。</description></item><item><title>React 設計模式: Compound Components</title><link>https://aryung.github.io/posts/2022-03-10-react-patten-compond-component/</link><pubDate>Thu, 10 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-10-react-patten-compond-component/</guid><description>楔子 摘錄 Kent 的 React Advance Pattern: Compond Components
+這個設計模式有什特殊的點?
+如果要做一個切換的鈕的元件，大概就會用一個變數來判斷要如何切換?
+function App() { const [on, setOn] = React.useState(false) return ( &amp;lt;div&amp;gt; { on ? &amp;lt;div&amp;gt;The button is on&amp;lt;/div&amp;gt; : null } { on ? null : &amp;lt;div&amp;gt;The button is off&amp;lt;/div&amp;gt; } &amp;lt;/div&amp;gt; ) } 這樣的 code 就有點醜，那有沒有可能性把 code 長成這樣 ?
+function App() { return ( &amp;lt;div&amp;gt; &amp;lt;Toggle&amp;gt; &amp;lt;ToggleOn&amp;gt;The button is on&amp;lt;/ToggleOn&amp;gt; &amp;lt;ToggleOff&amp;gt;The button is off&amp;lt;/ToggleOff&amp;gt; &amp;lt;ToggleButton /&amp;gt; &amp;lt;/Toggle&amp;gt; &amp;lt;/div&amp;gt; ) } 來完成 Toogle ToogleOn ToogleOff 這三個元件的寫法呢?</description></item><item><title>取得所有的組合再求結果</title><link>https://aryung.github.io/posts/2022-03-09-combination/</link><pubDate>Wed, 09 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-09-combination/</guid><description>使用情境 資料中任二組(或以上)符合某個條件
+例如: 想找 [1,2,3,4,5] 任二個值「大於」3有哪些情況
+二組資料的「所有組合」想找符合條件的結果
+例如: [1,2,3,4] 和 [7,8.9] 的組合中那個「乘」大於 10
+上面的情況在整理資料中蠻常發現的，所以手上有這個函數是蠻方便的，也不太需要自已去造輪子刻，拿來用就好了。
+這種會分二種情況:第一種是自已資料的展開，第二種是給二個資料組合展開。
+Combination const choose = (n, xs) =&amp;gt; n &amp;lt; 1 || n &amp;gt; xs .length ? [] : n == 1 ? [...xs .map (x =&amp;gt; [x])] : [ ...choose (n - 1, xs .slice (1)) .map (ys =&amp;gt; [xs [0], ...ys]), ...choose (n , xs .slice (1)) ] const getCombs = (min, max, xs) =&amp;gt; xs .</description></item><item><title>JS Prototype by Tyler McGinnis</title><link>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</link><pubDate>Tue, 08 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</guid><description>楔子 Tyler 講的 prototype 的觀念蠻清楚 &amp;amp; 簡單的，稍做一下記錄 Tyler McGinnis javascript
+prototype Prototype is a property of a function that point to an object when function is created.
+用下面的例子就可以來解釋上面的句子
+function imAFunction () {} imAFunction.prototype // {constructor: f} 把共用的 Method 放在一起包裝在一個 Object 內
+// 共用的 method const animalMethods() { eat () {}, sleep () {}, play () {} } function Animal (name, energy) { let animal = Object.crete(animalMethods) animal.name = name animal.</description></item><item><title>如何在 useEffect 內使用 async function</title><link>https://aryung.github.io/posts/2022-03-08-react-async-useeffect/</link><pubDate>Tue, 08 Mar 2022 20:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-react-async-useeffect/</guid><description>使用情境 一開始的 API 呼叫把值塞進 React 搜尋 autocomplete 前端一開始開啟都會有呼叫 API 情境的狀況發生，比較基本的方式使用大概會長這樣子。
+const Users = () =&amp;gt; { const [users, setUsers] = useState([]) useEffect(() =&amp;gt; { fetchUsers().then((users) =&amp;gt; setUsers(users)) }, []) if (!users) return &amp;lt;div&amp;gt;Loading...&amp;lt;/div&amp;gt; return ( &amp;lt;ul&amp;gt; {users.map((user) =&amp;gt; ( &amp;lt;li&amp;gt;{user.name}&amp;lt;/li&amp;gt; ))} &amp;lt;/ul&amp;gt; ) } 那如果要使用 async/await 呢?
+很直覺的會這樣寫
+// 直接在 useEffect 內使用 async useEffect(async () =&amp;gt; { const users = await fetchUsers() setUsers(users) }, []) 但會有一個情況發生，還記的 useEffect 有一個 cleanup function 嗎?</description></item><item><title>JS 原型說明 by Dan Abramov</title><link>https://aryung.github.io/posts/2022-03-08-justjavascript-prototype/</link><pubDate>Tue, 08 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-justjavascript-prototype/</guid><description>楔子 不同的大神針對 JS 有不同的說明講解，來看一下 Redux 作者的說明。
+Dan Abramov 有一個 justjavascrpt prototype 其實把觀念寫的蠻好的。
+這篇文章是其中一個 prototype 的內容摘錄如下:
+先有一個觀念就是 a = '123' 中 a 是變數(variable)， 123 是值(value)
+// teeth 是 variable // 32 是值 let human = { teeth: 32 } let gwen = { age: 19 } human 和 gwen 是一個 Object，他把屬性直接連到 值
+// gwen 沒有 teeth 屬性 console.log(gwen.teeth) // undefined let human = { teeth: 32 } 如果當用 __proto__ 在 Object 裡面，=的右邊是一個變數，這是就是去找這個變數的 reference 在哪?</description></item><item><title>Neo4j: 圖資料庫</title><link>https://aryung.github.io/posts/2022-03-05-graph-database/</link><pubDate>Sat, 05 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-05-graph-database/</guid><description>楔子 平常使用的最多的應該是 MySQL 了，但通常不同的資料庫有它的使用情境。
+簡單分就是有 SQL 和 NoSQL 系列，就二分法的方式處理。
+各種資料庫都有它的好用的地方，像 NoSQL 比較有名的就 Redis (它有硬碟版 SSDB)
+資料的結構常常會依據使用情境不同有所適合的資料庫。
+今天來分享所謂的「圖型」資料庫，資料庫一開始比較需要掌握的就是「設計的理念」
+最具代表性的就是 Neo4j
+先來看一下它查詢的語法就比較容易理解他的概念。
+MATCH (n {name: &amp;#39;John&amp;#39;})-[:FRIEND]-(friend) WITH n, count(friend) AS friendsCount WHERE friendsCount &amp;gt; 3 RETURN n, friendsCount 其實可以「感覺」的出來就是用「node」和「relationship」來做為查詢的方式，
+在每個「node」的上面有屬性，而不同的屬性可以有「條件」來進行過濾。
+node 用 () 來標記，關係用 [] 來表示
+特徵 就自然有人問，那這個資料庫的好處在哪?
+大家覺的「圖」這種的設計，比較常出現在哪? 答案就是 社群 ，它就是點和線的連結而以。
+當有這個想法後，例如我好朋友的朋友有哪些?
+MATCH (i {name: &amp;#39;me&amp;#39;})-[:FRIEND]-(f1:friend)-[:FRIEND]-(f2:friend) RETURN n, f1, f2 i = 我; f1 = 我朋友; f2 = 我朋友的朋友
+如果想像用 RDBMS，就要用二層 select 來處理(或使用 sub-query)，</description></item><item><title>函數式編程 Functor 的運用</title><link>https://aryung.github.io/posts/2022-03-04-functional-programming-in-js-box/</link><pubDate>Fri, 04 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-04-functional-programming-in-js-box/</guid><description>特徵 可以把函數當參數使用 可以使用 compose(反向) 或 pipe(正向) 的串連方式 // 建立一個標準的函數 let func = f = x =&amp;gt; f(x) let addOne = x =&amp;gt; x + 1 let ff = func(addOne) // f = addOne ff(1) // 1+1 pipe 就像一個水管一樣串接不同的 function
+const pipe = (...fns) =&amp;gt; x =&amp;gt; fns.reduce((y, f) =&amp;gt; f(y), x) pipe(x =&amp;gt; x + 1, x =&amp;gt; x + 2)(3) 練習看看 有了上面的東西，如何使用?
+如果有興趣可以去看看 Dr.Boolean 的一些影片，擷取一些常用的工具來做使用。
+const pipe = (.</description></item></channel></rss>

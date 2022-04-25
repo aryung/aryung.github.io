@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>javascript on AC 技術分享小站</title><link>https://aryung.github.io/tags/javascript/</link><description>Recent content in javascript on AC 技術分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 18 Mar 2022 18:29:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用 try catch</title><link>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</link><pubDate>Fri, 18 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</guid><description>楔子 寫程式時噴錯誤是蠻常見的，就每發生一個錯誤，再加一個條件去排除錯誤的問題
+往往如此， code 就會開始蠻的有點「巢狀」的感覺
+if(check) { // 1-level if(check) { // 2-level if(check) { // 3-level } else { // 3-level } } else { // 2-level } } else { // 1-level } 原來的 try-catch 標準的 try-catch 程式長相大概如下， try-catch 主要的功用就是避免程式噴錯跳離
+try { // do something } catch (e) { console.log(e.message) } 但也常常有個問題就是錯誤的類型如果不確定，就常常一直補 code 除錯。
+所以常常的流程大概就是
+包一個 try-catch ，噴錯看 log ，補 if-else 的 bug handling，再重覆 try-catch 的 log..
+// version 1 function go(x) { try { let len = x.</description></item><item><title>JS Prototype by Tyler McGinnis</title><link>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</link><pubDate>Tue, 08 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</guid><description>楔子 Tyler 講的 prototype 的觀念蠻清楚 &amp;amp; 簡單的，稍做一下記錄 Tyler McGinnis javascript
+prototype Prototype is a property of a function that point to an object when function is created.
+用下面的例子就可以來解釋上面的句子
+function imAFunction () {} imAFunction.prototype // {constructor: f} 把共用的 Method 放在一起包裝在一個 Object 內
+// 共用的 method const animalMethods() { eat () {}, sleep () {}, play () {} } function Animal (name, energy) { let animal = Object.crete(animalMethods) animal.name = name animal.</description></item><item><title>如何在 useEffect 內使用 async function</title><link>https://aryung.github.io/posts/2022-03-08-react-async-useeffect/</link><pubDate>Tue, 08 Mar 2022 20:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-react-async-useeffect/</guid><description>使用情境 一開始的 API 呼叫把值塞進 React 搜尋 autocomplete 前端一開始開啟都會有呼叫 API 情境的狀況發生，比較基本的方式使用大概會長這樣子。
+const Users = () =&amp;gt; { const [users, setUsers] = useState([]) useEffect(() =&amp;gt; { fetchUsers().then((users) =&amp;gt; setUsers(users)) }, []) if (!users) return &amp;lt;div&amp;gt;Loading...&amp;lt;/div&amp;gt; return ( &amp;lt;ul&amp;gt; {users.map((user) =&amp;gt; ( &amp;lt;li&amp;gt;{user.name}&amp;lt;/li&amp;gt; ))} &amp;lt;/ul&amp;gt; ) } 那如果要使用 async/await 呢?
+很直覺的會這樣寫
+// 直接在 useEffect 內使用 async useEffect(async () =&amp;gt; { const users = await fetchUsers() setUsers(users) }, []) 但會有一個情況發生，還記的 useEffect 有一個 cleanup function 嗎?</description></item><item><title>JS 原型說明 by Dan Abramov</title><link>https://aryung.github.io/posts/2022-03-08-justjavascript-prototype/</link><pubDate>Tue, 08 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-justjavascript-prototype/</guid><description>楔子 不同的大神針對 JS 有不同的說明講解，來看一下 Redux 作者的說明。
+Dan Abramov 有一個 justjavascrpt prototype 其實把觀念寫的蠻好的。
+這篇文章是其中一個 prototype 的內容摘錄如下:
+先有一個觀念就是 a = '123' 中 a 是變數(variable)， 123 是值(value)
+// teeth 是 variable // 32 是值 let human = { teeth: 32 } let gwen = { age: 19 } human 和 gwen 是一個 Object，他把屬性直接連到 值
+// gwen 沒有 teeth 屬性 console.log(gwen.teeth) // undefined let human = { teeth: 32 } 如果當用 __proto__ 在 Object 裡面，=的右邊是一個變數，這是就是去找這個變數的 reference 在哪?</description></item><item><title>函數式編程 Functor 的運用</title><link>https://aryung.github.io/posts/2022-03-04-functional-programming-in-js-box/</link><pubDate>Fri, 04 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-04-functional-programming-in-js-box/</guid><description>特徵 可以把函數當參數使用 可以使用 compose(反向) 或 pipe(正向) 的串連方式 // 建立一個標準的函數 let func = f = x =&amp;gt; f(x) let addOne = x =&amp;gt; x + 1 let ff = func(addOne) // f = addOne ff(1) // 1+1 pipe 就像一個水管一樣串接不同的 function
+const pipe = (...fns) =&amp;gt; x =&amp;gt; fns.reduce((y, f) =&amp;gt; f(y), x) pipe(x =&amp;gt; x + 1, x =&amp;gt; x + 2)(3) 練習看看 有了上面的東西，如何使用?
+如果有興趣可以去看看 Dr.Boolean 的一些影片，擷取一些常用的工具來做使用。
+const pipe = (.</description></item></channel></rss>
