@@ -3,8 +3,8 @@ name: github pages
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
-  pull_request:
+      - gp-pages  # Set a branch to deploy
+  # pull_request:
 
 jobs:
   deploy:
