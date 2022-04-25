@@ -12,6 +12,3 @@ function go(){
 }
 ```
 
-hehljfds
-
-ljfldskjfd
