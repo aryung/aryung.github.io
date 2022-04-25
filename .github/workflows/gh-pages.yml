@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master  # Set a branch to deploy
-  pull_request:
-    branches:
-      - master  # Set a branch to deploy
+  # pull_request:
+  #   branches:
+  #     - master  # Set a branch to deploy
 
 jobs:
   deploy:
