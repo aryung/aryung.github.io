@@ -1,0 +1,4 @@
+baseURL = 'https://aryung.github.io'
+languageCode = 'en-us'
+title = 'AC 技術分享小站'
+theme = "paperMod"
