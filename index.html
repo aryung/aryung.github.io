@@ -5,23 +5,15 @@
 一般式 這是比較正常的方式，最外層包一個 Provider 再利用 render prop 來操作
 import React from 'react'; export const UserContext = React.createContext(); export default function App() { return ( &lt;UserContext.Provider value="user"> &lt;User /> &lt;/UserContext.Provider> ) } function User() { return ( &lt;UserContext.Consumer> {value => &lt;h1>{value}&lt;/h1>} &lt;/UserContext.Consumer> ) } Kent c dodds 但其實如果使用 Kent 的起手式，其實蠻優美的.. Kent useContext code...</p></div><footer class=entry-footer><span title="2022-04-08 18:29:06 +0800 +0800">April 8, 2022</span></footer><a class=entry-link aria-label="post link to useContext Provider 起手式" href=https://aryung.github.io/posts/2022-04-08-hook-context-provider/></a></article><article class=post-entry><header class=entry-header><h2>JS 大魔王 this</h2></header><div class=entry-content><p>楔子 JS 的 this 通常有所謂的 scope 問題，最近蠻常遇到小夥伴在問，就順便做一下整理。
 This 大概有幾種情況
-默認綁定(default binding) 在 function 內的 this 為 function 上一層，strict模式為 undefined function main(){ console.log(this) // this = global } main() 隱式綁定(implicit binding) var person = { name: 'ac', getName: function() { console.log(this) // this = person } } person.getName() // 'ac' function click(cb){ cb() } var name = 'aac' click(person.getName) // 把 person.getName 丟到 click 的參數時，這時的 this = global，這時 global.name = 'aac' 所以有時看到this時，就把它丟到執行環境，有 object 就把 object = this，如果是 function 內就看 function 的那一層 this</p></div><footer class=entry-footer><span title="2022-03-30 18:29:06 +0800 +0800">March 30, 2022</span></footer><a class=entry-link aria-label="post link to JS 大魔王 this" href=https://aryung.github.io/posts/2022-03-30-this/></a></article><article class=post-entry><header class=entry-header><h2>JS 其實不是 class 的好朋友</h2></header><div class=entry-content><p>楔子 Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應。
-有趣的現象是在 js 環境下，後端很常用 OOP: class style。
-但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。
-如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下，
-就可能要去準備一下 class style 的 JS/Node。
+默認綁定(default binding) 在 function 內的 this 為 function 上一層，strict模式為 undefined function main(){ console.log(this) // this = global } main() 隱式綁定(implicit binding) var person = { name: 'ac', getName: function() { console.log(this) // this = person } } person.getName() // 'ac' function click(cb){ cb() } var name = 'aac' click(person.getName) // 把 person.getName 丟到 click 的參數時，這時的 this = global，這時 global.name = 'aac' 所以有時看到this時，就把它丟到執行環境，有 object 就把 object = this，如果是 function 內就看 function 的那一層 this</p></div><footer class=entry-footer><span title="2022-03-30 18:29:06 +0800 +0800">March 30, 2022</span></footer><a class=entry-link aria-label="post link to JS 大魔王 this" href=https://aryung.github.io/posts/2022-03-30-this/></a></article><article class=post-entry><header class=entry-header><h2>JS 其實不是 class 的好朋友</h2></header><div class=entry-content><p>楔子 Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應，有趣的現象是在 js 環境下，後端很常用 OOP: class style.
+但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下， 就可能要去準備一下 class style 的 JS/Node。
 而在 backend 的夥伴要去應徵 React 的話，就也要熟悉 function style。
 tl;dr
-一開始入門 js 時，光搞懂這些 this class 的東西應該就飽了，
-而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，
-感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，
-而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
-不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，
-發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，
-反而會比較有感就感。
-當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..
-實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
-Object.create Object.create 就是建立一個 Object 的模版資料，會依 prototype chian 去尋找相關的 method...</p></div><footer class=entry-footer><span title="2022-03-27 18:29:06 +0800 +0800">March 27, 2022</span></footer><a class=entry-link aria-label="post link to JS 其實不是 class 的好朋友" href=https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/></a></article><article class=post-entry><header class=entry-header><h2>GraphQL Server 方案</h2></header><div class=entry-content><p>楔子 GraphQL Server 的基本架構大概就幾個主要的元件:
+一開始入門 js 時，光搞懂這些 this class 的東西應該就飽了，而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
+不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，反而會比較有感就感。當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
+通常 this 會和 class 一起使用，而其實this就把它當成context(環境參數)來看待就可以了。
+Object.create Object.create 就是建立一個 Object 的模版資料，會依 prototype chian 去尋找相關的 method
+var objTemplate = {name: 'yo'} var childObj = Object....</p></div><footer class=entry-footer><span title="2022-03-27 18:29:06 +0800 +0800">March 27, 2022</span></footer><a class=entry-link aria-label="post link to JS 其實不是 class 的好朋友" href=https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/></a></article><article class=post-entry><header class=entry-header><h2>GraphQL Server 方案</h2></header><div class=entry-content><p>楔子 GraphQL Server 的基本架構大概就幾個主要的元件:
 types 資料結構定義 Server 伺服服務 resolver 資料整理用 模版的東西就拿來改比較快，畢竟自已搞定也要很有愛。
 codesandbox
 市面上常用的大概就 apollor server，要自已寫 types 和 resolvers。
