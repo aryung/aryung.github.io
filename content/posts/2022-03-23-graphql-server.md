@@ -3,8 +3,8 @@ layout: post
 title: 'GraphQL Server 方案'
 date: 2022-03-23T18:29:06+08:00
 draft: false
-tags:
-  - ''
+tags: 
+  - "javascript"
 ---
 
 # 楔子

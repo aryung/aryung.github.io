@@ -4,7 +4,7 @@ title:  "JS 其實不是 class 的好朋友"
 date: 2022-03-27T18:29:06+08:00
 draft: false
 tags: 
-  - ""
+  - "javascript"
 ---
 
 # 楔子
