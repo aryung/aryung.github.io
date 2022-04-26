@@ -5,6 +5,7 @@ date: 2022-03-13T18:29:06+08:00
 draft: false
 tags: 
   - "react"
+  - "javascript"
 ---
 
 # 楔子

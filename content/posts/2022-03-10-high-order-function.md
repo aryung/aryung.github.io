@@ -4,7 +4,7 @@ title:  "Hight Order Function & Callback Function"
 date: 2022-03-10T21:29:06+08:00
 draft: false
 tags: 
-  - "functional programming"
+  - "fp"
 ---
 
 # 楔子
