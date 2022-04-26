@@ -1,10 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>javascript on AC 技術分享小站</title><link>https://aryung.github.io/tags/javascript/</link><description>Recent content in javascript on AC 技術分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Fri, 18 Mar 2022 18:29:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用 try catch</title><link>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</link><pubDate>Fri, 18 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</guid><description>楔子 寫程式時噴錯誤是蠻常見的，就每發生一個錯誤，再加一個條件去排除錯誤的問題
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>javascript on AC 技術分享小站</title><link>https://aryung.github.io/tags/javascript/</link><description>Recent content in javascript on AC 技術分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Wed, 30 Mar 2022 18:29:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>JS 大魔王 this</title><link>https://aryung.github.io/posts/2022-03-30-this/</link><pubDate>Wed, 30 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-30-this/</guid><description>楔子 JS 的 this 通常有所謂的 scope 問題，最近蠻常遇到小夥伴在問，就順便做一下整理。
+This 大概有幾種情況
+默認綁定(default binding) 在 function 內的 this 為 function 上一層，strict模式為 undefined function main(){ console.log(this) // this = global } main() 隱式綁定(implicit binding) var person = { name: &amp;#39;ac&amp;#39;, getName: function() { console.log(this) // this = person } } person.getName() // &amp;#39;ac&amp;#39; function click(cb){ cb() } var name = &amp;#39;aac&amp;#39; click(person.getName) // 把 person.getName 丟到 click 的參數時，這時的 this = global，這時 global.name = &amp;#39;aac&amp;#39; 所以有時看到this時，就把它丟到執行環境，有 object 就把 object = this，如果是 function 內就看 function 的那一層 this</description></item><item><title>JS 其實不是 class 的好朋友</title><link>https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/</link><pubDate>Sun, 27 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-27-js-class-arrow-function/</guid><description>楔子 Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應。
+有趣的現象是在 js 環境下，後端很常用 OOP: class style。
+但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。
+如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下，
+就可能要去準備一下 class style 的 JS/Node。
+而在 backend 的夥伴要去應徵 React 的話，就也要熟悉 function style。
+tl;dr
+一開始入門 js 時，光搞懂這些 this class 的東西應該就飽了，
+而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，
+感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，
+而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
+不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，
+發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，
+反而會比較有感就感。
+當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..
+實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
+Object.create Object.create 就是建立一個 Object 的模版資料，會依 prototype chian 去尋找相關的 method</description></item><item><title>GraphQL Server 方案</title><link>https://aryung.github.io/posts/2022-03-23-graphql-server/</link><pubDate>Wed, 23 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-23-graphql-server/</guid><description>楔子 GraphQL Server 的基本架構大概就幾個主要的元件:
+types 資料結構定義 Server 伺服服務 resolver 資料整理用 模版的東西就拿來改比較快，畢竟自已搞定也要很有愛。
+codesandbox
+市面上常用的大概就 apollor server，要自已寫 types 和 resolvers。
+另一個比較好用的有 prisma ，它本身有包含 database ORM 的功用，
+也有自動產出 client 段方便套在自已的前端 web。
+雜談 其實在 GraphQL 中，最重要的就是 types &amp;amp; resolvers，
+這二個的意函在哪裡? types 其實就想像成資料的欄位設定，
+resolvers 就想像成取得資料要進行「加減乘除」等等處理的方法。
+如果從架構的角度來看
+client(Framework) &amp;lt;-&amp;gt; (server &amp;lt;-&amp;gt; database)
+在 client 和 server 端為了要彼此能溝通，勢必就要有一個標準的 types 來做依據。
+就指的是 client 和 server 端其實都各自要能吃同樣的 types &amp;amp; 解析 query-languages
+在 server 端，就因為常常有舊的資料庫問題，那是不是這個 type 同時也能滿足 ORM 的功能?</description></item><item><title>graphql use case</title><link>https://aryung.github.io/posts/2022-03-21-graphql/</link><pubDate>Mon, 21 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-21-graphql/</guid><description>楔子 一般傳統的 RESTFul API 通常有一個缺點， 就是要設定不同的路由(routes)來當作入口點，
+久而久之就會有一堆的路由網址，也不敢去做任何的修正， 誰敢擔責任改了是不是會噴錯，
+慢慢的就也放著讓它愈長愈大了，當然後來有些 library 像 swagger 可以幫助自動產生文件，
+但也還是需要做些設定，這也慢慢的讓 graphQL 有開始長大的空間。
+GraphQL 主要的精神架構為， Server 設定好條件(資料的格式 schema &amp;amp; 路由 routes)，
+這時透過查詢語法(Query Language)所帶來的參數，經由 business logic 的轉換(資料 CRUD)再回拋資料。
+Server 元件 要架一個 GraqphQL Server，思考一下要什麼東西??
+就觀念上就要有三個東西 = Server + 資料格式 Schema + 一些數據的處理
+Server: 可以用 ExpressJS，Apollo Server.. graphQL server Scehma: 基本上就是一個定義檔，可以用不同語言的格式 type &amp;amp; schema，應該各語言都有一些轉換方式 logic: 通常就會牽涉到「數據」的處理，就會扯到 DB ，就會有一些 ORM 使用(eg. sequelize, typeorm, prisma..等等) server var express = require(&amp;#39;express&amp;#39;); var { graphqlHTTP } = require(&amp;#39;express-graphql&amp;#39;); var { buildSchema } = require(&amp;#39;graphql&amp;#39;); var schema = buildSchema(` type Query { hello: String } `); var root = { hello: () =&amp;gt; &amp;#39;Hello world!</description></item><item><title>如何使用 try catch</title><link>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</link><pubDate>Fri, 18 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-18-fp-trycatch/</guid><description>楔子 寫程式時噴錯誤是蠻常見的，就每發生一個錯誤，再加一個條件去排除錯誤的問題
 往往如此， code 就會開始蠻的有點「巢狀」的感覺
 if(check) { // 1-level if(check) { // 2-level if(check) { // 3-level } else { // 3-level } } else { // 2-level } } else { // 1-level } 原來的 try-catch 標準的 try-catch 程式長相大概如下， try-catch 主要的功用就是避免程式噴錯跳離
 try { // do something } catch (e) { console.log(e.message) } 但也常常有個問題就是錯誤的類型如果不確定，就常常一直補 code 除錯。
 所以常常的流程大概就是
 包一個 try-catch ，噴錯看 log ，補 if-else 的 bug handling，再重覆 try-catch 的 log..
-// version 1 function go(x) { try { let len = x.</description></item><item><title>JS Prototype by Tyler McGinnis</title><link>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</link><pubDate>Tue, 08 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</guid><description>楔子 Tyler 講的 prototype 的觀念蠻清楚 &amp;amp; 簡單的，稍做一下記錄 Tyler McGinnis javascript
+// version 1 function go(x) { try { let len = x.</description></item><item><title>Box 的好用之處</title><link>https://aryung.github.io/posts/2022-03-15-fp-box/</link><pubDate>Tue, 15 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-15-fp-box/</guid><description>楔子 程式碼是拿來使用的，今天就來分享一些小工具來幫助寫 code ，這些東西算是函數式編程的入門吧，用久了才會比較有感，今天就當來練練手。
+先上個常用的 tool box
+const pipe = (...fns) =&amp;gt; x =&amp;gt; fns.reduce((y, f) =&amp;gt; f(y), x) const I = x =&amp;gt; x const Box = x =&amp;gt; ({ chain: f =&amp;gt; f(x), map: f =&amp;gt; Box(f(x)), fold: f =&amp;gt; f(x), inspect: () =&amp;gt; `Box(${x})` }) const Right = x =&amp;gt; ({ chain : f =&amp;gt; f(x), map : f =&amp;gt; Right(f(x)), fold : (f, g) =&amp;gt; g(x), inspect : () =&amp;gt; `Right(${x})` }) const Left = x =&amp;gt; ({ chain : f =&amp;gt; Left(x), map : f =&amp;gt; Left(x), fold : (f, g) =&amp;gt; f(x), inspect : () =&amp;gt; `Left(${x})` }) const fromNullable = x =&amp;gt; (x === null || x === undefined || x.</description></item><item><title>Promise 新手常花時間的坑</title><link>https://aryung.github.io/posts/2022-03-13-promise-codding-bug-to-newbie/</link><pubDate>Sun, 13 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-13-promise-codding-bug-to-newbie/</guid><description>楔子 最近有些小夥伴在彼此討論時，常常出現一些不太知道原因，但改一改就好了，就隨手做一下筆記也方便提醒自已。
+狀況一: 分不清楚有沒有回傳值 functo go1 () { return 1 } // 有回傳值 functin go2 () { console.log(3) } // 無回傳值 const go3 = () =&amp;gt; 2 const go4 = () =&amp;gt; { console.log(4) } // 無回傳值 function addOne (x) { return x } const go5 = () =&amp;gt; addOne(3) const go6 = () =&amp;gt; { 7 } const go7 = (x) =&amp;gt; ({x}) 從上面的問題來看，最直覺的就是要有 return 字眼就是代表有回傳值，所以 go1 go2 很容易判斷。</description></item><item><title>JS Prototype by Tyler McGinnis</title><link>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</link><pubDate>Tue, 08 Mar 2022 21:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-08-uidot-prototype/</guid><description>楔子 Tyler 講的 prototype 的觀念蠻清楚 &amp;amp; 簡單的，稍做一下記錄 Tyler McGinnis javascript
 prototype Prototype is a property of a function that point to an object when function is created.
 用下面的例子就可以來解釋上面的句子
 function imAFunction () {} imAFunction.prototype // {constructor: f} 把共用的 Method 放在一起包裝在一個 Object 內
