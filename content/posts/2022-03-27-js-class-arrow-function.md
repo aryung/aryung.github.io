@@ -8,37 +8,19 @@ tags:
 ---
 
 # 楔子
-Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應。
+Coding Style 是一個很有意思的題目，往往不太一樣的 style 就會造成很不一樣的適應，有趣的現象是在 js 環境下，後端很常用 OOP: class style. 
 
-有趣的現象是在 js 環境下，後端很常用 OOP: class style。
-
-但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。
-
-如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下，
-
-就可能要去準備一下 class style 的 JS/Node。
+但在 React 的環境下就很 function style，但在 angular 的世界內就也是 oop。如果去面式 Node 的後端，如果是 full stack 前端比較熟悉 react 的情況下， 就可能要去準備一下 class style 的 JS/Node。
 
 而在 backend 的夥伴要去應徵 React 的話，就也要熟悉 function style。
 
 tl;dr
 
-一開始入門 js 時，光搞懂這些 `this` `class` 的東西應該就飽了，
+一開始入門 js 時，光搞懂這些 `this` `class` 的東西應該就飽了，而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
 
-而市面上的書藉也大多數都是先講完這些原理再來開始寫程式，
+不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，反而會比較有感就感。當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
 
-感覺有點反過來了，寫程式總是先可以弄出東西再來慢慢理解為什麼，
-
-而一開始的架構沒很大時，光搞抽象弄懂這些額外的「知識」，就搞的暈頭轉向了。
-
-不妨先試著用純 functional 的方式來寫一些東西，慢慢真的熟悉了，
-
-發現很多東西都開始好像 code 變的又臭又長時，再來解決這些抽象的東西，
-
-反而會比較有感就感。
-
-當看了下面一堆 js 的說明，光考就弄倒一堆人了，就自然討厭 js 了，但就算弄懂其實..
-
-實務上的差異並不太大，踩到坑再去記住會身體更有感覺。
+通常 `this` 會和 `class` 一起使用，而其實`this`就把它當成`context`(環境參數)來看待就可以了。
 
 ## Object.create
 `Object.create` 就是建立一個 Object 的模版資料，會依 `prototype chian` 去尋找相關的 method
@@ -49,7 +31,8 @@ console.log(childObj) // {} why?
 console.log(childObj.name) // yo why?
 ```
 
-## call apply bind
+## this 的好朋友: call apply bind
+
 和 `Object.create` 有異取同工之妙
 
 這篇可以參考 [pjchender](https://pjchender.blogspot.com/2016/06/function-borrowingfunction-currying.html)
@@ -72,7 +55,36 @@ var logName = function(location1,location2){
 }
 ```
 
-有了上面的樣本，開始把 this 用 `bind` `apply` `call` 綁進去取代 `this`
+有了上面的樣本，開始把 this 用 `bind` `apply` `call` 綁進去取代 `this`，正確來說是，這類的函數，把它想像第一個參數就是綁定`this`的概念，之後就是其它函數的變量。
+
+這樣講蠻難體會的吧?就來舉個例子吧
+
+```
+function getThis(){
+  console.log(this)
+  console.log(this?.name)
+}
+
+getThis() // undefined 或 window
+
+getThis.bind({name: 'ac'})() // 'ac'
+
+// 如果加入其它的參數
+function getThisArg(age){
+  console.log(this)
+  console.log(this?.name)
+  consol.log(age)
+}
+getThisAge(13) // undefined 或 window
+getThis.bind({name: 'ac'})(99) // 'ac'
+// 參數用 array 傳入
+getThis.apply({name: 'ac'}, [99]) // 'ac' 99 
+// 參數用 argvs 傳入
+getThis.call({name: 'ac'}, 99) // 'ac' 99
+
+```
+
+再拿其它網站的例子來參考 [pjchender 筆記](https://pjchender.blogspot.com/2016/06/function-borrowingfunction-currying.html)
 
 ```
 var logName = function(location1,location2){
@@ -209,6 +221,7 @@ function arrowFn() {
 ```
 
 這時的 arrowFn 指的是 window
+
 ```
 var button = document.querySelector('button')
 var arrowFn = () => {
