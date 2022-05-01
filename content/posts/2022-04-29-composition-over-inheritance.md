@@ -7,7 +7,6 @@ tags:
   - 'oop'
   - 'fp'
 ---
-
 # 楔子
 如果平常在寫 OOP(物件導向)語言的人，應該就會很熟悉繼承(inheritance);如果有寫 ruby 的人，應該更熟悉鴨子型別(duck typing);如果在寫 FP(functional programming)的，就更熟悉組合(composition)。每個語言都有他的特性，端看怎使用而以，語言的熟悉度就在於這些手法的習性而以。
 
@@ -165,7 +164,7 @@ jack.haveLunch("little mouse")
 
 ## Combining Mixins
 
-開始試著做出模版來使用
+其實 Mixins 的概念就是所有的「方法」都是當「模組」來使用，然後所有的 class 就是依照想要的模組來繼承的概念，類似 duck typing，就假設如果有 bark() fly() eat() 三個方法塞在各自不同的模組，而如果有一個 class 想要有 fly 和 eat 就繼承這二個模組就可以了。
 
 ```javascript
 const MixinA = superclass => class extends superclass {}
@@ -185,7 +184,7 @@ class Base {}
 class Child extends MixinB(Base) {}
 ```
 
-如果組合太多就會很巢狀...
+如果組合太多就會很巢狀...但其實可以轉成一個說法，如果把 MixinA 變成一個抽出來的方法，是不是就可以想像把一個 class 塞進去想要的方法。
 
 ```javascript
 const MixinA = superclass => class extends superclass {};
@@ -197,7 +196,7 @@ class Base {}
 class Child extends MixinD(MixinC(MixinB(MixinA(Base)))) {}
 ```
 
-這時其實可以利用 fp 常用的 compose(lodash/fp/compose)
+這時其實可以利用 fp 常用的 `compose(lodash/fp/compose)` ，這時就想像把 Mixins 塞到某個 class 內。
 
 ```javascript
 import compose from "lodash/fp/compose"
@@ -213,7 +212,7 @@ const Behaviors = compose(MixinA, MixinB, MixinC)(Base)
 class Child extends Behaviors {}
 ```
 
-來標準化出來一個範本
+來標準化出來一個範本，拿個例子來看看
 
 ```javascript
 // behaviors.js
@@ -267,7 +266,6 @@ jack.eat('doggie food') // Eating  doggie food
 jack.bark(); // Woff woff!
 jack.haveLunch("little mouse");  // // Eating little mouse. Going to 💩
 ```
-
 
 # 參考文獻
 [alligator inheritance over composition](https://alligator.io/js/class-composition/)
