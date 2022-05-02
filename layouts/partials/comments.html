@@ -1,10 +1,12 @@
 {{- /* Comments area start */ -}}
 {{- /* to add comments read => https://gohugo.io/content-management/comments/ */ -}}
 {{- /* Comments area end */ -}}
+{{ if .Site.Params.utteranc.enable }}
 <script src="https://utteranc.es/client.js"
-        repo="aryung/utterances-comment"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
+repo="{{ .Site.Params.utteranc.repo }}"
+issue-term="{{ .Site.Params.utteranc.issueTerm }}"
+theme="{{ .Site.Params.utteranc.theme }}"
+crossorigin="anonymous"
+async>
 </script>
+{{ end }}

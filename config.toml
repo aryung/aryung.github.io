@@ -3,3 +3,9 @@ languageCode = "zh-tw"
 title = 'AC分享小站'
 theme = "paperMod"
 googleAnalytics = "G-WWZN99CL5W"
+
+[params.utteranc]
+    enable = false
+    repo = "aryung/aryung.github.io"
+    issueTerm = "title"
+    theme = "github-light"
