@@ -4,4 +4,4 @@ Undefined (undefined), used for unintentionally missing values. Null (null), use
 但在 javascript 中其實都可以實踐這些特性來讓不同的技術人來使用，今天就拿一些網站的 demo code 來分享。
 code 先來看看標準的 es2015 的 classes &amp;amp; prototype
 Inheritance with Classes
-// case I prototype var Animal = function(name) { this.name = name; } var Alligator = function(name) { Animal.apply(this, arguments); // Call parent constructor } Alligator.prototype = Object.create(Animal.prototype); Alligator.prototype.constructor = Alligator; var jack = new Alligator(&amp;#34;jack&amp;#34;); // case II classes class Animal { constructor(name) { this.</description></item></channel></rss>
+// case I prototype var Animal = function(name) { this.name = name } var Alligator = function(name) { Animal.apply(this, arguments); // Call parent constructor } Alligator.prototype = Object.create(Animal.prototype) Alligator.prototype.constructor = Alligator var jack = new Alligator(&amp;#34;jack&amp;#34;) // case II classes class Animal { constructor(name) { this.</description></item></channel></rss>
