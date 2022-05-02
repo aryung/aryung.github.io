@@ -43,15 +43,15 @@ var person = {
   firstname: 'Jeremy',
   lastname: 'Lin',
   getFullName: function(){
-    var fullname = this.firstname + ' ' + this.lastname;
-    return fullname;
+    var fullname = this.firstname + ' ' + this.lastname
+    return fullname
   }
 }
 
 // this 指是 ? 因為沒有 object 就往上一層 window
 var logName = function(location1,location2){
-  console.log('Logged: ' + this.getFullName());
-  console.log('Arguments: ' + location1 + ' ' + location2);
+  console.log('Logged: ' + this.getFullName())
+  console.log('Arguments: ' + location1 + ' ' + location2)
 }
 ```
 
@@ -88,8 +88,8 @@ getThis.call({name: 'ac'}, 99) // 'ac' 99
 
 ```
 var logName = function(location1,location2){
-  console.log('Logged: ' + this.getFullName());
-  console.log('Arguments: ' + location1 + ' ' + location2);
+  console.log('Logged: ' + this.getFullName())
+  console.log('Arguments: ' + location1 + ' ' + location2)
 }.bind(person) // 重點是取 person 的 this.getFullName()
 
 logName('Taiwan', 'Japan')
@@ -99,15 +99,15 @@ logName('Taiwan', 'Japan')
 
 ```
 var logName = function(location1,location2){
-  console.log('Logged: ' + this.getFullName());
-  console.log('Arguments: ' + location1 + ' ' + location2);
+  console.log('Logged: ' + this.getFullName())
+  console.log('Arguments: ' + location1 + ' ' + location2)
 }
 // call
 logName.call(person, 'Taiwan', 'Japan')
 
 var logName = function(location1,location2){
-  console.log('Logged: ' + this.getFullName());
-  console.log('Arguments: ' + location1 + ' ' + location2);
+  console.log('Logged: ' + this.getFullName())
+  console.log('Arguments: ' + location1 + ' ' + location2)
 }
 // apply
 logName.apply(person, ['Taiwan', 'Japan'])
@@ -121,7 +121,7 @@ add.call({age: 10}, 1, 2) // 13
 add.call(null, 1, 4) // 5 
 add.apply(null, [1, 2]) // 3
 add.apply(null, [1, 4]) // 5
-var add1 = add.bind(null, 1);
+var add1 = add.bind(null, 1)
 console.log(add1(2)) // 3
 console.log(add1(4))	
 ```
@@ -145,7 +145,7 @@ yo.getNameWithThis() // yo
 ```
 class Person {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
   
   getName() {
@@ -153,7 +153,7 @@ class Person {
   }
 }
 
-var yo = new Person('yo');
+var yo = new Person('yo')
 console.log(yo)
 ```
 
@@ -161,7 +161,7 @@ console.log(yo)
 ```
 class Person {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
   
   getName() {
@@ -173,8 +173,8 @@ class Person {
 class Friend extends Person {
   constructor(name, age) {
     // 用 super 呼叫 extends 指定的 class
-    super(name);
-    this.age = age;
+    super(name)
+    this.age = age
   }
   
   getAge() {
@@ -182,7 +182,7 @@ class Friend extends Person {
   }
 }
 
-const ho = new Friend('ho', 18);
+const ho = new Friend('ho', 18)
 
 console.log(ho.getName()); // ho
 console.log(ho.getAge()); // 18
@@ -193,13 +193,13 @@ console.log(ho.getAge()); // 18
 箭頭函數的 this 取最近一層的 scope，所以在 function 內的 this 的 scope 在 function，而 setTimeout 的 scope 會取最大層(window)
 
 ```
-let id = 21;
+let id = 21
 let data = {
   id: 21,
-};
+}
 
-fn.call(data);
-arrowFn.call(data);
+fn.call(data)
+arrowFn.call(data)
 
 // 原本的 function
 function fn() {
@@ -207,7 +207,7 @@ function fn() {
 
   setTimeout(function () {
     console.log(this.constructor.name); // Window
-  }, 100);
+  }, 100)
 }
 
 // 箭頭函式 Arrow function
@@ -216,7 +216,7 @@ function arrowFn() {
 
   setTimeout(() => {
     console.log(this.constructor.name); // Object(data)
-  }, 100);
+  }, 100)
 }
 ```
 

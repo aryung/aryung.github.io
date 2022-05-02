@@ -20,31 +20,31 @@ Inheritance with Classes
 ```javascript
 // case I prototype
 var Animal = function(name) {
-  this.name = name;
+  this.name = name
 }
 
 var Alligator = function(name) {
   Animal.apply(this, arguments); // Call parent constructor
 }
 
-Alligator.prototype = Object.create(Animal.prototype);
-Alligator.prototype.constructor = Alligator;
-var jack = new Alligator("jack");
+Alligator.prototype = Object.create(Animal.prototype)
+Alligator.prototype.constructor = Alligator
+var jack = new Alligator("jack")
 
 // case II classes
 class Animal {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
 }
 
 class Alligator extends Animal {}
 
-const jack = new Alligator("jack");
+const jack = new Alligator("jack")
 // extends
 class Alligator extends Animal {
   constructor(...args) {
-    super(...args);
+    super(...args)
   }
 }
 ```
@@ -55,12 +55,12 @@ Object Composition
 const alligator = name => {
   const self = {
     name
-  };
+  }
 
-  return self;
+  return self
 }
 
-const jack =  alligator("jack");
+const jack =  alligator("jack")
 ```
 
 這時把 class 實例化(new) 的 method 拆出來，用 function 來呈現，下面的例子就想像成 socialBehaviors 這個變數具有 sayHi eat poop 的功能。
@@ -106,17 +106,17 @@ jack.bite() // Yum yum!
 const dog = name => {
   const self = {
     name
-  };
+  }
 
   const dogBehaviors = self => ({
     bark: () => console.log("Woff woff!"),
     haveLunch: food => {
-      self.eat(food);
-      self.poop();
+      self.eat(food)
+      self.poop()
     }
-  });
+  })
 
-  return Object.assign(self, dogBehaviors(self), canEat(), canPoop());
+  return Object.assign(self, dogBehaviors(self), canEat(), canPoop())
 }
 ```
 
@@ -126,11 +126,11 @@ const dog = name => {
 // Create a mixin
 const FoodMixin = superclass => class extends superclass {
   eat(food) {
-    console.log(`Eating ${food}`);
+    console.log(`Eating ${food}`)
   }
 
   poop() {
-    console.log("Going to 💩");
+    console.log("Going to 💩")
   }
 }
 ```
@@ -188,10 +188,10 @@ class Child extends MixinB(Base) {}
 如果組合太多就會很巢狀...但其實可以轉成一個說法，如果把 MixinA 變成一個抽出來的方法，是不是就可以想像把一個 class 塞進去想要的方法。
 
 ```javascript
-const MixinA = superclass => class extends superclass {};
-const MixinB = superclass => class extends superclass {};
-const MixinC = superclass => class extends superclass {};
-const MixinD = superclass => class extends superclass {};
+const MixinA = superclass => class extends superclass {}
+const MixinB = superclass => class extends superclass {}
+const MixinC = superclass => class extends superclass {}
+const MixinD = superclass => class extends superclass {}
 
 class Base {}
 class Child extends MixinD(MixinC(MixinB(MixinA(Base)))) {}
@@ -202,9 +202,9 @@ class Child extends MixinD(MixinC(MixinB(MixinA(Base)))) {}
 ```javascript
 import compose from "lodash/fp/compose"
 
-const MixinA = superclass => class extends superclass {};
-const MixinB = superclass => class extends superclass {};
-const MixinC = superclass => class extends superclass {};
+const MixinA = superclass => class extends superclass {}
+const MixinB = superclass => class extends superclass {}
+const MixinC = superclass => class extends superclass {}
 
 class Base {}
 
@@ -219,21 +219,21 @@ class Child extends Behaviors {}
 // behaviors.js
 export const EatMixin = superclass => class extends superclass {
   eat(food) {
-    console.log(`Eating ${food}`);
+    console.log(`Eating ${food}`)
   }
-};
+}
 
 export const PoopMixin = superclass => class extends superclass {
   poop() {
-    console.log("Going to 💩");
+    console.log("Going to 💩")
   }
-};
+}
 
 export const FlyMixin = superclass => class extends superclass {
   fly() {
-    console.log("Flying for real!");
+    console.log("Flying for real!")
   }
-};
+}
 ```
 
 來實例化..
@@ -248,7 +248,7 @@ class Animal {
   }
 }
 
-const SuperPoweredDog = compose(EatMixin, PoopMixin, FlyMixin)(Animal);
+const SuperPoweredDog = compose(EatMixin, PoopMixin, FlyMixin)(Animal)
 
 
 class Dog extends SuperPoweredDog {
@@ -257,16 +257,16 @@ class Dog extends SuperPoweredDog {
   }
 
   haveLunch(food) {
-    this.eat(food);
-    this.poop();
+    this.eat(food)
+    this.poop()
   }
 }
 
-const jack = new Dog("jack");
+const jack = new Dog("jack")
 jack.eat('doggie food') // Eating  doggie food
 jack.bark(); // Woff woff!
 jack.haveLunch("little mouse");  // // Eating little mouse. Going to 💩
 ```
 
-參考文獻
-- [alligator inheritance over composition](https://alligator.io/js/class-composition/)
+# 參考文獻
+[alligator inheritance over composition](https://alligator.io/js/class-composition/)
