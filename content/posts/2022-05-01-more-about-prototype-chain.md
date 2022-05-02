@@ -51,7 +51,6 @@ constructor: 函數內有一個 constructor 屬性會定義到 prototype
 - 程式員能直接操作顯式原型, 但不能直接操作隱式原型(ES6之前)
 
 資料來源
-[JustJavascript](https://justjavascript.com)
-[prototype](https://juejin.cn/post/6975694337698955295)
-[another prototype](https://juejin.cn/post/6844903837623386126)
-
+- [JustJavascript](https://justjavascript.com)
+- [prototype](https://juejin.cn/post/6975694337698955295)
+- [another prototype](https://juejin.cn/post/6844903837623386126)

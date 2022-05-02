@@ -2,3 +2,4 @@ baseURL = 'https://aryung.github.io/'
 languageCode = "zh-tw" 
 title = 'AC分享小站'
 theme = "paperMod"
+googleAnalytics = "G-WWZN99CL5W"

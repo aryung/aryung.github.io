@@ -63,7 +63,9 @@ const alligator = name => {
 const jack =  alligator("jack");
 ```
 
-這時把 class 實例化(new) 的 method 拆出來，用 function 來呈現
+這時把 class 實例化(new) 的 method 拆出來，用 function 來呈現，下面的例子就想像成 socialBehaviors 這個變數具有 sayHi eat poop 的功能。
+
+或許有人會問，那 self 的屬性在哪使用了?其實在操作這樣的手法時，方法不就是處理這些屬性的結果值嗎?就是說在物件導向裡面的這些屬性值，其實就是要得到「方法」後的結果值，不是嗎?
 
 ```javascript
 // We have some behaviors
@@ -80,7 +82,6 @@ const canPoop = () => ({
 // Combined previous behaviours
 const socialBehaviors = self => Object.assign({}, canSayHi(self), canEat(), canPoop())
 
-// 實現 extends 的功能
 const alligator = name => {
   const self = {
     name
@@ -99,7 +100,7 @@ jack.eat("Banana") // Eating Banana...
 jack.bite() // Yum yum!
 ```
 
-如果把上面的例子標準化
+如果把上面的例子抽出來 class 化就可以得到下面的模版
 
 ```javascript
 const dog = name => {
@@ -267,5 +268,5 @@ jack.bark(); // Woff woff!
 jack.haveLunch("little mouse");  // // Eating little mouse. Going to 💩
 ```
 
-# 參考文獻
-[alligator inheritance over composition](https://alligator.io/js/class-composition/)
+參考文獻
+- [alligator inheritance over composition](https://alligator.io/js/class-composition/)
