@@ -21,10 +21,7 @@ resolvers 就想像成取得資料要進行「加減乘除」等等處理的方�
 client(Framework) &amp;lt;-&amp;gt; (server &amp;lt;-&amp;gt; database)
 在 client 和 server 端為了要彼此能溝通，勢必就要有一個標準的 types 來做依據。
 就指的是 client 和 server 端其實都各自要能吃同樣的 types &amp;amp; 解析 query-languages
-在 server 端，就因為常常有舊的資料庫問題，那是不是這個 type 同時也能滿足 ORM 的功能?</description></item><item><title>graphql use case</title><link>https://aryung.github.io/posts/2022-03-21-graphql/</link><pubDate>Mon, 21 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-21-graphql/</guid><description>楔子 一般傳統的 RESTFul API 通常有一個缺點， 就是要設定不同的路由(routes)來當作入口點，
-久而久之就會有一堆的路由網址，也不敢去做任何的修正， 誰敢擔責任改了是不是會噴錯，
-慢慢的就也放著讓它愈長愈大了，當然後來有些 library 像 swagger 可以幫助自動產生文件，
-但也還是需要做些設定，這也慢慢的讓 graphQL 有開始長大的空間。
+在 server 端，就因為常常有舊的資料庫問題，那是不是這個 type 同時也能滿足 ORM 的功能?</description></item><item><title>graphql use case</title><link>https://aryung.github.io/posts/2022-03-21-graphql-intro/</link><pubDate>Mon, 21 Mar 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-03-21-graphql-intro/</guid><description>楔子 一般傳統的 RESTFul API 通常有一個缺點， 就是要設定不同的路由(routes)來當作入口點， 久而久之就會有一堆的路由網址，也不敢去做任何的修正， 誰敢擔責任改了是不是會噴錯， 慢慢的就也放著讓它愈長愈大了，當然後來有些 library 像 swagger 可以幫助自動產生文件， 但也還是需要做些設定，這也慢慢的讓 graphQL 有開始長大的空間。
 GraphQL 主要的精神架構為， Server 設定好條件(資料的格式 schema &amp;amp; 路由 routes)，
 這時透過查詢語法(Query Language)所帶來的參數，經由 business logic 的轉換(資料 CRUD)再回拋資料。
 Server 元件 要架一個 GraqphQL Server，思考一下要什麼東西??
