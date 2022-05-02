@@ -55,7 +55,7 @@ client(Framework) <-> (server <-> database)
 
 ## types 定義 schema
 
-```
+```typescript
 const typeDefs = gql`
 
 # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
@@ -75,7 +75,7 @@ books: [Book]
 
 ## server 伺服服務
 
-```
+```typescript
 // index.js
 const { ApolloServer, gql } = require('apollo-server');
 
@@ -86,7 +86,7 @@ console.log(`🚀 Server ready at ${url}`);
 
 ## resolvers 羅輯
 
-```
+```typescript
 const resolvers = {
 Query: {
 books: () => books,
@@ -100,7 +100,7 @@ books: () => books,
 
 ![prisma types](https://i.imgur.com/jHkNjKU.png)
 
-```
+```typescript
 type Post {
 id: ID! @unique
 title: String!
@@ -121,7 +121,7 @@ posts: [Post!]!
 
 ## server 伺服服務
 
-```
+```typescript
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -146,15 +146,12 @@ await prisma.\$disconnect()
 
 ## resolvers 羅輯
 
-```
-
-# Count all posts with a title containing 'GraphQL'
-
+```typescript
 query {
-postsConnection(where: { title_contains: "GraphQL" }) {
-aggregate {
-count
-}
-}
+  postsConnection(where: { title_contains: "GraphQL" }) {
+  aggregate {
+    count
+  }
+  }
 }
 ```
