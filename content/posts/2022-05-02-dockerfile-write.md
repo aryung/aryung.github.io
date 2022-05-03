@@ -1,13 +1,12 @@
 ---
 layout: post
 title:  "Dockerfile 小練習"
-date: 2022-05-02T18:30:06+08:00
+date: 2022-05-02T18:29:06+08:00
 draft: false
 tags: 
   - "docker"
   - "devops"
 ---
-
 # 楔子
 Docker 是現在開發的基本工，除了不想污染本地的環境以外，更重要的是可以把執行環境標準化，不會因為不同的環境就有無法執行的狀況，來試著了解一下吧。
 
@@ -31,11 +30,28 @@ Hint: (為 dockerfile 指令)
 - 把原來的程式碼 copy 到 docker 內的 workdir (COPY WORKDIR)
 - 安裝相關程式(dependency) (RUN)
 
-試著寫出一個 NodeApp Dockerfile
+- 試著寫出一個 NodeApp Dockerfile
 提示: 下方為 build & runtime 的 bash 指令
 ```javascript
 npm run build
 npm run start
+```
+
+dockerfile 步驟
+
+```dockerfile
+# step 1: image source
+
+# step 2: set workdir
+
+# step 3: app install
+
+# step 4: extra package if needed
+
+EXPOSE 3000
+
+# step 5: cmd
+CMD ["npm", "run", "start"]
 ```
 
 來試著提供下面的答案
@@ -54,7 +70,7 @@ EXPOSE 3000
 CMD ["npm", "run", "start"]
 ```
 
-試著寫出一個 PythonApp Dockerfile
+- 試著寫出一個 PythonApp Dockerfile
 
 ```dockerfile
 # step 1: image source
