@@ -7,7 +7,6 @@ tags:
   - 'oop'
   - 'prototype'
 ---
-
 # 楔子
 原型鏈 (prototype chain) 應該是 javascript 新人入門最討厭的東西了。
 

@@ -1,12 +1,5 @@
 baseURL = 'https://aryung.github.io/'
-languageCode = "zh-tw" 
-title = 'AC分享小站'
-theme = "paperMod"
 googleAnalytics = "G-WWZN99CL5W"
-
-[params.utteranc]
-enable = true
-issueTerm = "pathname"
-theme = "github-light"
-owner = "aryung"              # Your GitHub ID
-repo = "aryung/aryung.github.io"     # The repo to store comments
+languageCode = "zh-tw"
+theme = "paperMod"
+title = 'AC分享小站'
