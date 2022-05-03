@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>devops on AC分享小站</title><link>https://aryung.github.io/tags/devops/</link><description>Recent content in devops on AC分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 02 May 2022 18:30:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Dockerfile 小練習</title><link>https://aryung.github.io/posts/2022-05-02-dockerfile-write/</link><pubDate>Mon, 02 May 2022 18:30:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-05-02-dockerfile-write/</guid><description>楔子 Docker 是現在開發的基本工，除了不想污染本地的環境以外，更重要的是可以把執行環境標準化，不會因為不同的環境就有無法執行的狀況，來試著了解一下吧。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>devops on AC分享小站</title><link>https://aryung.github.io/tags/devops/</link><description>Recent content in devops on AC分享小站</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 02 May 2022 18:29:06 +0800</lastBuildDate><atom:link href="https://aryung.github.io/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Dockerfile 小練習</title><link>https://aryung.github.io/posts/2022-05-02-dockerfile-write/</link><pubDate>Mon, 02 May 2022 18:29:06 +0800</pubDate><guid>https://aryung.github.io/posts/2022-05-02-dockerfile-write/</guid><description>楔子 Docker 是現在開發的基本工，除了不想污染本地的環境以外，更重要的是可以把執行環境標準化，不會因為不同的環境就有無法執行的狀況，來試著了解一下吧。
 網路的 docker 說明介紹蠻多的，就不多做說明了，就比較用講解的方式來自已可以寫一個所屬的 dockerfile 的實做羅輯。
 環境架構 自行參考相關安裝
 MacOS linux windows 認識 images 與 tag 來試看看 ubuntu 的 base image 來看， (image name):(tag) 這是基本的格式，這個格式可以使用在 dockerfile 內。 ubuntu example
 試題來試試 case I Hint: (為 dockerfile 指令)
-基礎的影像 base image (FROM) 每個程式都會歷經 build test(optional) runtime 的過程 (RUN CMD) 把原來的程式碼 copy 到 docker 內的 workdir (COPY WORKDIR) 安裝相關程式(dependency) (RUN) 試著寫出一個 NodeApp Dockerfile 提示: 下方為 build &amp;amp; runtime 的 bash 指令</description></item></channel></rss>
+基礎的影像 base image (FROM)
+每個程式都會歷經 build test(optional) runtime 的過程 (RUN CMD)
+把原來的程式碼 copy 到 docker 內的 workdir (COPY WORKDIR)
+安裝相關程式(dependency) (RUN)
+試著寫出一個 NodeApp Dockerfile 提示: 下方為 build &amp;amp; runtime 的 bash 指令</description></item></channel></rss>
