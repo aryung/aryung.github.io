@@ -61,7 +61,7 @@ FROM python:3.9-bullseye
 # step 2: set workdir
 WORKDIR /work
 # step 3: app install
-COPY ./requirements.txt /work
+COPY . /work
 # step 4: extra package if needed
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 3000
