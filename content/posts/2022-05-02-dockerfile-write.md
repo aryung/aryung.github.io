@@ -70,23 +70,6 @@ EXPOSE 3000
 CMD ["npm", "run", "start"]
 ```
 
-- 試著寫出一個 PythonApp Dockerfile
-
-```dockerfile
-# step 1: image source
-FROM python:3.9-bullseye
-# step 2: set workdir
-WORKDIR /work
-# step 3: app install
-COPY . /work
-# step 4: extra package if needed
-RUN pip install --no-cache-dir -r requirements.txt
-EXPOSE 3000
-# step 5: cmd
-CMD ["exec", "flask", "run", "--port=8888", "-h", "0.0.0.0"
-```
-
-
 參考文獻
 - [Docker install](https://www.docker.com/get-started/)
 - [DockerHub](https://hub.docker.com/)
