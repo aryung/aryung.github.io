@@ -10,7 +10,7 @@ tags:
 同樣的 javascript 針對所謂的 async 有其發生的歷史變革，有興趣的可以去找找影片了解一下。
 
 # callback
-一開始採用的方式就是使用一個 callback function ，因為 javascript 可以把 function 當參數丟入另一個 function ，就有了最原始的模式，基本的概念就是
+一開始採用的方式就是使用一個 callback function，因為 javascript 可以把 function 當參數丟入另一個 function，就有了最原始的模式，基本的概念就是
 
 ```javascript
 function executeFunc(callbackFun) {
@@ -48,7 +48,7 @@ delay(()=> console.log('delay'), 1000)
 ```
 
 # promise
-隨著 es6 Promise 的出現，來改寫一下，這裡蠻重要的，要很習慣把東西包成一包 Promise ，非常常用。
+隨著 es6 Promise 的出現，來改寫一下，這裡蠻重要的，要很習慣把東西包成一包 Promise，非常常用。
 
 - 題型: 採用 new Promise((resolve, reject) =>{ // do something}) 來把一個 callback function 包裝成 Promise
 
@@ -111,4 +111,4 @@ exeAsyncFun(100) // 100
 ```
 
 # 想法
-由於 javascript 的歷史變革，配合的 lib 也有其時代背景，在入門時一開始蠻常去試著改寫相關的 function ; 例如看到第三方有一個 callback ，但想實用 async/await 就至少自已可以先包一個 promise 再使用 async/await 。
+由於 javascript 的歷史變革，配合的 lib 也有其時代背景，在入門時一開始蠻常去試著改寫相關的 function ; 例如看到第三方有一個 callback，但想實用 async/await 就至少自已可以先包一個 promise 再使用 async/await 。
