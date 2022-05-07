@@ -15,7 +15,7 @@ tags:
 這時透過查詢語法(Query Language)所帶來的參數，經由 business logic 的轉換(資料 CRUD)再回拋資料。
 
 ## Server 元件
-要架一個 GraqphQL Server，思考一下要什麼東西??
+要架一個 GraphQL Server，思考一下要什麼東西??
 
 就觀念上就要有三個東西 = Server + 資料格式 Schema + 一些數據的處理
 - Server: 可以用 ExpressJS，Apollo Server.. [graphQL server](https://graphql.org/code/#javascript)
@@ -24,25 +24,25 @@ tags:
 
 ### server
 ```typescript
-var express = require('express');
-var { graphqlHTTP } = require('express-graphql');
-var { buildSchema } = require('graphql');
+var express = require('express')
+var { graphqlHTTP } = require('express-graphql')
+var { buildSchema } = require('graphql')
 
 var schema = buildSchema(`
   type Query {
     hello: String
   }
-`);
+`)
 
-var root = { hello: () => 'Hello world!' };
+var root = { hello: () => 'Hello world!' }
 
-var app = express();
+var app = express()
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
-}));
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+}))
+app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'))
 ```
 
 ### 定義(Schema)
@@ -81,11 +81,11 @@ var postType = new GraphQLObjectType({
       resolve: (post, args, context, { rootValue }) => {
         // return the post body only if the user is the post's author
         if (context.user && (context.user.id === post.authorId)) {
-          return post.body;
+          return post.body
         }
-        return null;
+        return null
       }
     }
   }
-});
+})
 ```
