@@ -5,7 +5,7 @@ date: 2022-05-12T09:30:06+08:00
 draft: false
 tags: 
   - "typescript"
-	- "functional programming"
+  - "functional programming"
 ---
 
 # 楔子
