@@ -139,7 +139,7 @@ const duck = createDuck('Quack!')
 console.log(duck.fly().quack())
 ```
 
-組合一下使用 pipe 的方式來隨意組合想用的 functionS
+組合一下使用 pipe 的方式來隨意組合想用的 function*s*
 
 ```javascript
 const pipe = (...fns) => x => fns.reduce((y, f) => f(y), x)
