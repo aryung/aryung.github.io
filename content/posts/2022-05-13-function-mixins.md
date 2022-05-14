@@ -24,7 +24,7 @@ tags:
 
 # Object composition
 
-在 javascript 內，物件可以塞 function ，這時就要利用到 `Object.assing` 這個方法。
+在 javascript 內，物件可以塞 function ，這時就要利用到 `Object.assign` 這個方法。
 
 ```javascript
 const chocolate = { 
