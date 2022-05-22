@@ -29,7 +29,7 @@ const MyMonad = value => ({
 })
 Monad.of = x => Monad(x)
 
-Monad(21).map( x= > x * 2).map( x => console.log(x))
+Monad(21).map( x => x * 2).map( x => console.log(x))
 ```
 
 來舉個 Identity Monad 的例子
