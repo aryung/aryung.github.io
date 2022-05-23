@@ -18,7 +18,7 @@ useContext 是 hook 系列很常使用的東西，通常就在「跨」 componen
 
 這是比較正常的方式，最外層包一個 Provider 再利用 render prop 來操作
 
-```
+```javascript
 import React from 'react';
 
 export const UserContext = React.createContext();
@@ -47,7 +47,7 @@ function User() {
 
 用一個 component 當 Provider 同時也可以在那個 Provider 內使用 useEffect 之類的功用..
 
-```
+```javascript
 import * as React from 'react'
 
 const CountContext = React.createContext()
@@ -69,7 +69,7 @@ function useCount() {
 
 function CountDisplay() {
   const [count] = useCount()
-  return <div>{`The current count is ${count}`}</div>
+  return <div>The current count is {count}</div>
 }
 
 function Counter() {
