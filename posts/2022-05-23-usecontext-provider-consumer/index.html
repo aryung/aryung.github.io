@@ -1,0 +1,224 @@
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>useContext Provider Consumer | AC分享小站</title><meta name=keywords content="react,hook"><meta name=description content="楔子 context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。
+而在 react component 有幾種情況可以夾帶這些「環境變數」
+ props state  React 提供了另一個手法「context」來簡化語法
+The Context API const LocaleContext = React.createContext(); LocaleContext 有二個屬性: Provider & Consumer
+ Provider allows us to &ldquo;declare the data that we want available throughout our component tree&rdquo;.
+  Consumer allows &ldquo;any component in the component tree that needs that data to be able to subscribe to it&rdquo;.
+ Provider 提供一個 value 的 props
+<MyContext.Provider value={data}> <App /> </MyContext."><meta name=author content><link rel=canonical href=https://aryung.github.io/posts/2022-05-23-usecontext-provider-consumer/><link crossorigin=anonymous href=/assets/css/stylesheet.min.b4e19c453811e60acfec1f00c15ac2be1c53f6ab90187e684358ce7faaf48bab.css integrity="sha256-tOGcRTgR5grP7B8AwVrCvhxT9quQGH5oQ1jOf6r0i6s=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.2840b7fccd34145847db71a290569594bdbdb00047097f75d6495d162f5d7dff.js integrity="sha256-KEC3/M00FFhH23GikFaVlL29sABHCX911kldFi9dff8=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://aryung.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://aryung.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://aryung.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://aryung.github.io/apple-touch-icon.png><link rel=mask-icon href=https://aryung.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-WWZN99CL5W"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-WWZN99CL5W",{anonymize_ip:!1})}</script><meta property="og:title" content="useContext Provider Consumer"><meta property="og:description" content="楔子 context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。
+而在 react component 有幾種情況可以夾帶這些「環境變數」
+ props state  React 提供了另一個手法「context」來簡化語法
+The Context API const LocaleContext = React.createContext(); LocaleContext 有二個屬性: Provider & Consumer
+ Provider allows us to &ldquo;declare the data that we want available throughout our component tree&rdquo;.
+  Consumer allows &ldquo;any component in the component tree that needs that data to be able to subscribe to it&rdquo;.
+ Provider 提供一個 value 的 props
+<MyContext.Provider value={data}> <App /> </MyContext."><meta property="og:type" content="article"><meta property="og:url" content="https://aryung.github.io/posts/2022-05-23-usecontext-provider-consumer/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-05-23T18:29:06+08:00"><meta property="article:modified_time" content="2022-05-23T18:29:06+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="useContext Provider Consumer"><meta name=twitter:description content="楔子 context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。
+而在 react component 有幾種情況可以夾帶這些「環境變數」
+ props state  React 提供了另一個手法「context」來簡化語法
+The Context API const LocaleContext = React.createContext(); LocaleContext 有二個屬性: Provider & Consumer
+ Provider allows us to &ldquo;declare the data that we want available throughout our component tree&rdquo;.
+  Consumer allows &ldquo;any component in the component tree that needs that data to be able to subscribe to it&rdquo;.
+ Provider 提供一個 value 的 props
+<MyContext.Provider value={data}> <App /> </MyContext."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://aryung.github.io/posts/"},{"@type":"ListItem","position":2,"name":"useContext Provider Consumer","item":"https://aryung.github.io/posts/2022-05-23-usecontext-provider-consumer/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"useContext Provider Consumer","name":"useContext Provider Consumer","description":"楔子 context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。\n而在 react component 有幾種情況可以夾帶這些「環境變數」\n props state  React 提供了另一個手法「context」來簡化語法\nThe Context API const LocaleContext = React.createContext(); LocaleContext 有二個屬性: Provider \u0026amp; Consumer\n Provider allows us to \u0026ldquo;declare the data that we want available throughout our component tree\u0026rdquo;.\n  Consumer allows \u0026ldquo;any component in the component tree that needs that data to be able to subscribe to it\u0026rdquo;.\n Provider 提供一個 value 的 props\n\u0026lt;MyContext.Provider value={data}\u0026gt; \u0026lt;App /\u0026gt; \u0026lt;/MyContext.","keywords":["react","hook"],"articleBody":"楔子 context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。\n而在 react component 有幾種情況可以夾帶這些「環境變數」\n props state  React 提供了另一個手法「context」來簡化語法\nThe Context API const LocaleContext = React.createContext(); LocaleContext 有二個屬性: Provider \u0026 Consumer\n Provider allows us to “declare the data that we want available throughout our component tree”.\n  Consumer allows “any component in the component tree that needs that data to be able to subscribe to it”.\n Provider 提供一個 value 的 props\n 比較完整的 code\n// LocaleContext.js import React from \"react\"; const LocaleContext = React.createContext(); export default LocaleContext; import React from \"react\"; import LocaleContext from \"./LocaleContext\"; export default function App() { const [locale, setLocale] = React.useState(\"en\"); return (  ); } Consumer 透過 render prop 把值注入 html(jsx)\n {(data) = { return ( The \"value\" prop passed to \"Provider\" was {data} ); }}  透過 render prop 把值注入 components\n// Blog.js import React from \"react\"; import LocaleContext from \"./LocaleContext\"; export default function Blog() { return (  {(locale) = }  ); } Updating Context State 設定要使用的 set-function\nexport default function App() { const [locale, setLocale] = React.useState(\"en\"); const toggleLocale = () = { setLocale((locale) = { return locale === \"en\" ? \"es\" : \"en\"; }); }; return (  ); } 把 set-function 塞到 value 裡，但這有一個 issue 就是每次的 render 都會產生一個 toogleLocale，要避免這個就使用 useMemo\n To fix this, instead of passing a new object to value every time, we want to give it a reference to an object it already knows about. To do this, we can use the useMemo Hook.\n export default function App () { const [locale, setLocale] = React.useState('en') const toggleLocale = () = { setLocale((locale) = { return locale === 'en' ? 'es' : 'en' }) } const value = React.useMemo(() = ({ locale, toggleLocale }), [locale]) return (  ) } 這時的 Consumer 就可以 subscribe\n// Blog.js import React from \"react\"; import LocaleContext from \"./LocaleContext\"; export default function Blog() { return (  {({ locale, toggleLocale }) = (   )}  ); } defaultValue 可以設定 context 的預設值\nconst MyContext = React.creatContext(\"defaultValue\"); const LocaleContext = React.createContext(\"en\"); context 的值可以覆寫\nimport React from \"react\"; import ReactDOM from \"react-dom\"; const ExpletiveContext = React.createContext(\"shit\"); function ContextualExclamation() { return (  {(word) = Oh {word}!}  ); } function VisitGrandmasHouse() { return ( Grandma's House 🏡  ); } function VisitFriendsHouse() { return (  Friend's House 🏚  ); } function App() { return (   ); } useContext 該可以使用 useContext 來示範\nexport default function Nav() { return (  {({ locale, toggleLocale }) = locale === \"en\" ? ( ) : ( ) }  ); } 如果有多個 context 時就有點巢狀，就會有 performance issue\nexport default function Nav() { return (  {({ authed }) = authed === false ? ( ) : (  {({ locale, toggleLocale }) = locale === \"en\" ? ( ) : ( ) }  ) }  ); } 這時就有 useContext 的方法來使用\nexport default function Nav() { const { locale, toggleLocale } = React.useContext(LocaleContext); return locale === \"en\" ? ( ) : ( ); } 多個 context\nexport default function Nav() { const { authed } = React.useContext(AuthedContext); const { locale, toggleLocale } = React.useContext(LocaleContext); if (authed === false) { return ; } return locale === \"en\" ? ( ) : ( ); } context 雖然好用但也不要過度使用，畢竟有效能問題\n參考資料\n tyler mcGinnis  ","wordCount":"603","inLanguage":"en","datePublished":"2022-05-23T18:29:06+08:00","dateModified":"2022-05-23T18:29:06+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://aryung.github.io/posts/2022-05-23-usecontext-provider-consumer/"},"publisher":{"@type":"Organization","name":"AC分享小站","logo":{"@type":"ImageObject","url":"https://aryung.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://aryung.github.io/ accesskey=h title="AC分享小站 (Alt + H)">AC分享小站</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>useContext Provider Consumer</h1><div class=post-meta><span title="2022-05-23 18:29:06 +0800 +0800">May 23, 2022</span></div></header><div class=post-content><h1 id=楔子>楔子<a hidden class=anchor aria-hidden=true href=#楔子>#</a></h1><p>context 就語意上指的就是一個「環境」的概念，就如果轉成電腦來說就是「State」的意思。</p><p>而在 react component 有幾種情況可以夾帶這些「環境變數」</p><ul><li>props</li><li>state</li></ul><p>React 提供了另一個手法「context」來簡化語法</p><h1 id=the-context-api>The Context API<a hidden class=anchor aria-hidden=true href=#the-context-api>#</a></h1><pre tabindex=0><code>const LocaleContext = React.createContext();
+</code></pre><p>LocaleContext 有二個屬性: Provider & Consumer</p><blockquote><p>Provider allows us to &ldquo;declare the data that we want available throughout our component tree&rdquo;.</p></blockquote><blockquote><p>Consumer allows &ldquo;any component in the component tree that needs that data to be able to subscribe to it&rdquo;.</p></blockquote><h1 id=provider>Provider<a hidden class=anchor aria-hidden=true href=#provider>#</a></h1><p>提供一個 value 的 props</p><pre tabindex=0><code>&lt;MyContext.Provider value={data}&gt;
+  &lt;App /&gt;
+&lt;/MyContext.Provider&gt;
+</code></pre><p>比較完整的 code</p><pre tabindex=0><code>// LocaleContext.js
+import React from &#34;react&#34;;
+
+const LocaleContext = React.createContext();
+
+export default LocaleContext;
+
+import React from &#34;react&#34;;
+import LocaleContext from &#34;./LocaleContext&#34;;
+
+export default function App() {
+  const [locale, setLocale] = React.useState(&#34;en&#34;);
+
+  return (
+    &lt;LocaleContext.Provider value={locale}&gt;
+      &lt;Home /&gt;
+    &lt;/LocaleContext.Provider&gt;
+  );
+}
+</code></pre><h1 id=consumer>Consumer<a hidden class=anchor aria-hidden=true href=#consumer>#</a></h1><p>透過 render prop 把值注入 html(jsx)</p><pre tabindex=0><code>&lt;MyContext.Consumer&gt;
+  {(data) =&gt; {
+    return (
+      &lt;h1&gt;The &#34;value&#34; prop passed to &#34;Provider&#34; was {data}&lt;/h1&gt;
+    );
+  }}
+&lt;/MyContext.Consumer&gt;
+</code></pre><p>透過 render prop 把值注入 components</p><pre tabindex=0><code>// Blog.js
+import React from &#34;react&#34;;
+import LocaleContext from &#34;./LocaleContext&#34;;
+
+export default function Blog() {
+  return (
+    &lt;LocaleContext.Consumer&gt;
+      {(locale) =&gt; &lt;Posts locale={locale} /&gt;}
+    &lt;/LocaleContext.Consumer&gt;
+  );
+}
+</code></pre><h1 id=updating-context-state>Updating Context State<a hidden class=anchor aria-hidden=true href=#updating-context-state>#</a></h1><p>設定要使用的 set-function</p><pre tabindex=0><code>export default function App() {
+  const [locale, setLocale] = React.useState(&#34;en&#34;);
+
+  const toggleLocale = () =&gt; {
+    setLocale((locale) =&gt; {
+      return locale === &#34;en&#34; ? &#34;es&#34; : &#34;en&#34;;
+    });
+  };
+
+  return (
+    &lt;LocaleContext.Provider
+      value={{
+        locale,
+        toggleLocale,
+      }}
+    &gt;
+      &lt;Home /&gt;
+    &lt;/LocaleContext.Provider&gt;
+  );
+}
+</code></pre><p>把 set-function 塞到 value 裡，但這有一個 issue 就是每次的 render 都會產生一個 toogleLocale，要避免這個就使用 useMemo</p><blockquote><p>To fix this, instead of passing a new object to value every time, we want to give it a reference to an object it already knows about. To do this, we can use the useMemo Hook.</p></blockquote><pre tabindex=0><code>export default function App () {
+  const [locale, setLocale] = React.useState(&#39;en&#39;)
+
+  const toggleLocale = () =&gt; {
+    setLocale((locale) =&gt; {
+      return locale === &#39;en&#39; ? &#39;es&#39; : &#39;en&#39;
+    })
+  }
+
+  const value = React.useMemo(() =&gt; ({
+    locale,
+    toggleLocale
+  }), [locale])
+
+  return (
+    &lt;LocaleContext.Provider value={value}&gt;
+      &lt;Home /&gt;
+    &lt;/LocaleContext.Provider&gt;
+  )
+}
+</code></pre><p>這時的 Consumer 就可以 subscribe</p><pre tabindex=0><code>// Blog.js
+import React from &#34;react&#34;;
+import LocaleContext from &#34;./LocaleContext&#34;;
+
+export default function Blog() {
+  return (
+    &lt;LocaleContext.Consumer&gt;
+      {({ locale, toggleLocale }) =&gt; (
+        &lt;React.Fragment&gt;
+          &lt;Nav toggleLocal={toggleLocale} /&gt;
+          &lt;Posts locale={locale} /&gt;
+        &lt;/React.Fragment&gt;
+      )}
+    &lt;/LocaleContext.Consumer&gt;
+  );
+}
+</code></pre><h1 id=defaultvalue>defaultValue<a hidden class=anchor aria-hidden=true href=#defaultvalue>#</a></h1><p>可以設定 context 的預設值</p><pre tabindex=0><code>const MyContext = React.creatContext(&#34;defaultValue&#34;);
+</code></pre><pre tabindex=0><code>const LocaleContext = React.createContext(&#34;en&#34;);
+</code></pre><p>context 的值可以覆寫</p><pre tabindex=0><code>import React from &#34;react&#34;;
+import ReactDOM from &#34;react-dom&#34;;
+
+const ExpletiveContext = React.createContext(&#34;shit&#34;);
+
+function ContextualExclamation() {
+  return (
+    &lt;ExpletiveContext.Consumer&gt;
+      {(word) =&gt; &lt;span&gt;Oh {word}!&lt;/span&gt;}
+    &lt;/ExpletiveContext.Consumer&gt;
+  );
+}
+
+function VisitGrandmasHouse() {
+  return (
+    &lt;ExpletiveContext.Provider value=&#34;poop&#34;&gt;
+      &lt;h1&gt;Grandma&#39;s House 🏡&lt;/h1&gt;
+      &lt;ContextualExclamation /&gt;
+    &lt;/ExpletiveContext.Provider&gt;
+  );
+}
+
+function VisitFriendsHouse() {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;h1&gt;Friend&#39;s House 🏚&lt;/h1&gt;
+      &lt;ContextualExclamation /&gt;
+    &lt;/React.Fragment&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;VisitFriendsHouse /&gt;
+      &lt;VisitGrandmasHouse /&gt;
+    &lt;/React.Fragment&gt;
+  );
+}
+</code></pre><h1 id=usecontext>useContext<a hidden class=anchor aria-hidden=true href=#usecontext>#</a></h1><p>該可以使用 useContext 來示範</p><pre tabindex=0><code>export default function Nav() {
+  return (
+    &lt;LocaleContext.Consumer&gt;
+      {({ locale, toggleLocale }) =&gt;
+        locale === &#34;en&#34; ? (
+          &lt;EnglishNav toggleLocale={toggleLocale} /&gt;
+        ) : (
+          &lt;SpanishNav toggleLocale={toggleLocale} /&gt;
+        )
+      }
+    &lt;/LocaleContext.Consumer&gt;
+  );
+}
+</code></pre><p>如果有多個 context 時就有點巢狀，就會有 performance issue</p><pre tabindex=0><code>export default function Nav() {
+  return (
+    &lt;AuthedContext.Consumer&gt;
+      {({ authed }) =&gt;
+        authed === false ? (
+          &lt;Redirect to=&#34;/login&#34; /&gt;
+        ) : (
+          &lt;LocaleContext.Consumer&gt;
+            {({ locale, toggleLocale }) =&gt;
+              locale === &#34;en&#34; ? (
+                &lt;EnglishNav toggleLocale={toggleLocale} /&gt;
+              ) : (
+                &lt;SpanishNav toggleLocale={toggleLocale} /&gt;
+              )
+            }
+          &lt;/LocaleContext.Consumer&gt;
+        )
+      }
+    &lt;/AuthedContext.Consumer&gt;
+  );
+}
+</code></pre><p>這時就有 useContext 的方法來使用</p><pre tabindex=0><code>export default function Nav() {
+  const { locale, toggleLocale } = React.useContext(LocaleContext);
+
+  return locale === &#34;en&#34; ? (
+    &lt;EnglishNav toggleLocale={toggleLocale} /&gt;
+  ) : (
+    &lt;SpanishNav toggleLocale={toggleLocale} /&gt;
+  );
+}
+</code></pre><p>多個 context</p><pre tabindex=0><code>export default function Nav() {
+  const { authed } = React.useContext(AuthedContext);
+
+  const { locale, toggleLocale } = React.useContext(LocaleContext);
+
+  if (authed === false) {
+    return &lt;Redirect to=&#34;/login&#34; /&gt;;
+  }
+
+  return locale === &#34;en&#34; ? (
+    &lt;EnglishNav toggleLocale={toggleLocale} /&gt;
+  ) : (
+    &lt;SpanishNav toggleLocale={toggleLocale} /&gt;
+  );
+}
+</code></pre><p>context 雖然好用但也不要過度使用，畢竟有效能問題</p><p>參考資料</p><ul><li><a href=https://ui.dev>tyler mcGinnis</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://aryung.github.io/tags/react/>react</a></li><li><a href=https://aryung.github.io/tags/hook/>hook</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2022 <a href=https://aryung.github.io/>AC分享小站</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(t){t.preventDefault();var e=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(e)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(e)}']`).scrollIntoView({behavior:"smooth"}),e==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${e}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
